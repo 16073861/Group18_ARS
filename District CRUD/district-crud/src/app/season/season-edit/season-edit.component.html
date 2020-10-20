@@ -1,0 +1,26 @@
+<center>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body" style="text-align: center;">
+            <h3 class="card-title">Edit Season</h3>
+            <form [formGroup]="SeasForm" (ngSubmit)="onFormSubmit(SeasForm)">
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Season ID"  formControlName="id" disabled>  
+                </div>                
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Description"  formControlName="description">  
+                </div>
+                <label>Start Date:</label>
+                <div class="input-group mb-3">  
+                    <input type="date" class="form-control" formControlName="startDate">  
+                </div>
+                <label>End Date:</label>
+                <div class="input-group mb-3">  
+                    <input type="date" class="form-control" formControlName="endDate">  
+                </div>
+
+                <button type="submit" class="btn btn-block btn-success">Edit Season</button>
+                <button class = "btn btn-block btn-primary" routerLink="/season" >Cancel</button>
+            </form> 
+        </div>
+    </div>
+</center>

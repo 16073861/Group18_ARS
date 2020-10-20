@@ -1,0 +1,25 @@
+<div class="card" style="width: 30rem;">
+    <div class="card-body" style="text-align: center;">
+
+      <h3 class="card-title">Update Program</h3>
+      <form [formGroup]="AgencyForm"  > 
+        
+        <div class="input-group mb-3">  
+            <input type="" disabled class="form-control" placeholder="Coach_ID"  formControlName="Program_ID" disabled>  
+          </div>
+          <div class="input-group mb-3">  
+            <input type="text" class="form-control" placeholder="Coach_ID"  formControlName="Coach_ID" disabled>  
+          </div> 
+          <div class="input-group mb-3">  
+            <input type="text" class="form-control" placeholder="Name"  formControlName="Name">  
+          </div>  
+          <div class="input-group mb-3">  
+            <input type="text" class="form-control" placeholder="Description"  formControlName="Description">  
+          </div>
+         
+          <button type="submit" class="btn btn-block btn-success" (click)="UpdateAgency()" >Update Program</button>
+          <button (click)="GoToList()" class = "btn btn-block btn-primary" >Back to List</button>
+      </form> 
+
+    </div> 
+  </div>

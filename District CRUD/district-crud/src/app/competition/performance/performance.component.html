@@ -1,0 +1,184 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<h2 style="text-align: center;">Performances</h2>
+
+   <!-- <button type="button" class="btn btn-outline-warning" style="background-color: #505c7c;" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapse">
+        Filter Results 
+        <i class="fa fa-angle-down" style="font-size:18px"></i>
+  </button>
+  <div id="collapse" [ngbCollapse]="!isCollapsed">
+    <div class="card">
+        <div class="card-body" style="background-color: #505c7c; text-align: center;"> 
+            Filter Athletes
+            <div>
+                <select class="custom-select"  formControlName='Age_ID'>
+                    <option value="" disabled>Age</option>
+                    <option *ngFor="let nage of Ages" value={{nage.Age_ID}}>
+                        {{nage.Age_ID}} 
+                    </option>
+                </select><br><br>
+                <div style="width: 100px; float:left; margin:10px">
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-warning" id="dropdown" ngbDropdownToggle>Event</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdown" style="background-color: #505c7c;">
+                            <button ngbDropdownItem>100m Hurdles</button>
+                            <button ngbDropdownItem>100m Sprint</button>
+                            <button ngbDropdownItem>800m</button>
+                        </div>                
+                    </div>
+                </div>
+                <div style="width: 100px; float:left; margin:10px">
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-warning" id="dropdown" ngbDropdownToggle>Competition</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdown" style="background-color: #505c7c;">
+                            <button ngbDropdownItem>Competition A</button>
+                            <button ngbDropdownItem>Competition B</button>
+                            <button ngbDropdownItem>Competition C</button>
+                        </div>                
+                    </div>
+                </div>                
+            </div>                                  
+        </div>
+    </div>
+  </div>
+</div><br><br>-->
+
+<!-- <div class="container">
+    <div>
+      <table class="table table-striped" *ngFor="let perf of Performances">
+        <thead>
+          <tr>
+            <th>{{ EventType.Name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let athlete of Athletes">
+            <td>{{ athlete.Name }}</td>
+            <td>{{ athlete.Surname }}</td>
+            <td>{{ athlete.Age }}</td>
+            <td>{{ athlete.Name }}</td>
+            <td>{{ athlete.Name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+  <!-- <div><h2 style="text-align: center;">{{ nperf.Date }}</h2></div> -->
+
+  <!--<div style="float: left; margin-left: 10%;">
+    <button type="button" class="btn btn-outline-warning" style="color: black;" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapse">
+        Filter Results 
+        <i class="fa fa-angle-down" style="font-size:18px"></i>
+  </button>
+  <div id="collapse" [ngbCollapse]="!isCollapsed">
+    <div class="card">
+        <div class="card-body" style="text-align: center;"> 
+            Filter Performances
+            <div>
+                <div style="float:left; margin:10px">
+                    
+                </div>
+                <div style="width: 100px; float:left; margin:10px">
+                    <div ngbDropdown class="d-inline-block">
+                        <select class="custom-select"  formControlName='eventtype_id'>
+                            <option value="1" disabled>Event</option>
+                            <option *ngFor="let etype of eventTypes" value={{etype.EventType_ID}}>
+                                {{etype.Name}} 
+                            </option>
+                        </select>                
+                    </div>
+                </div>
+                <div style="width: 100px; float:left; margin:10px">
+                    <div ngbDropdown class="d-inline-block">
+                        <button type="submit" class="btn btn-outline-warning" style="color: black;" (click)="Filt(1)">
+                            Filter
+                        </button>                   
+                    </div>
+                </div>                
+            </div>                                  
+        </div>
+    </div>
+  </div>
+</div><br><br>-->
+
+<div class="container">
+    <div class="text-right">
+        <div style="border: 1px solid black; width: 25%; margin-left: 75%; text-align: center;">
+            <br><h3>Import Performances</h3>
+            Please select the csv file:
+            <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv"/>
+            <div  class="text-right" *ngIf="records.length > 0">            
+                <center>
+                    <button type="button" class="btn btn-outline-info" (click)="onImport()" style="margin-bottom: 5px; margin-top: 5px;">
+                        Import
+                    </button>
+                </center>      
+            </div>
+        </div><br>
+                
+        <div class="text-right">
+            <button id="Create" type="submit" class="btn btn-primary" routerLink="/performanceCreate">
+                Create New
+            </button>
+        </div><br>     
+        <table class="table table-striped" *ngFor="let comp of competitions">
+            <thead>
+                <tr>
+                    <th>{{ comp.Name }}</th>
+                </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Athlete</th>
+                    <th>Event</th>
+                    <th>Age Group</th>
+                    <th>Date</th>
+                    <th>Result</th>
+                    <th>Points</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let nperf of performances; let i = index">
+                    <ng-container *ngIf="comp.Competition_ID == nperf.Competition_ID">
+                        <ng-container *ngFor="let heat of heats">
+                            <ng-container *ngIf="nperf.Heat_ID == heat.Heat_ID">
+                                <ng-container *ngFor="let age of ageGroups">
+                                    <ng-container *ngIf="nperf.Age_ID == age.Age_ID">
+                                        <ng-container *ngFor="let event of events">
+                                            <ng-container *ngIf="nperf.Event_ID == event.Event_ID">
+                                                <ng-container *ngFor="let ath of athletes">
+                                                    <ng-container *ngIf="nperf.Athlete_ID == ath.Athlete_ID">                                    
+                                                        <td>{{ nperf.Performance_ID }}</td>
+                                                        <td>{{ ath.Name }}</td>
+                                                        <td>{{ event.Description }}</td>
+                                                        <td>U18</td>
+                                                        <td>{{ nperf.Date.substring(0,10) }}</td>
+                                                        <td>{{ nperf.Result }}</td>
+                                                        <td>{{ nperf.Point }}</td>
+                                                        <td style="text-align: center;">
+                                                            <button type="button" class="btn btn-info" (click)="onEdit(nperf.Performance_ID)" disabled>
+                                                                Edit
+                                                            </button>           
+                                                        </td>
+                                                        <td style="text-align: center;">
+                                                            <button type="button" class="btn btn-danger" (click)="onDelete(nperf.Performance_ID, nperf)" >
+                                                                Delete
+                                                            </button>                        
+                                                        </td>
+                                                    </ng-container>
+                                                </ng-container>
+                                            </ng-container>
+                                        </ng-container>                                            
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </tbody>        
+        </table>
+    </div>
+</div>

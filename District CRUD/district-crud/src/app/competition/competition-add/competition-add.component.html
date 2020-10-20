@@ -1,0 +1,59 @@
+<center>
+    <div id="body">
+        <div id="child">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body" style="text-align: center;">
+                    <h2 class="card-title">Add New Competition</h2>
+                    <form [formGroup]="competitionForm" (ngSubmit)="onFormSubmit(competitionForm)">                    
+                        <div class="input-group mb-3">  
+                            <input type="text" class="form-control" placeholder="Competition Name"  formControlName="name">  
+                        </div>
+
+                        <div class="input-group mb-3">  
+                            <input type="date" class="form-control" formControlName="date">  
+                        </div>
+
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='venue_id'>
+                                <option value="" disabled>Venue</option>
+                                <option *ngFor="let nven of venues" value={{nven.Venue_ID}}>
+                                    {{nven.Name}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='district_id'>
+                                <option value="" disabled>District</option>
+                                <option *ngFor="let ndist of districts" value={{ndist.District_ID}}>
+                                    {{ndist.Name}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='club_id'>
+                                <option value="" disabled>Club</option>
+                                <option *ngFor="let nclub of clubs" value={{nclub.Club_ID}}>
+                                    {{nclub.Name}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='competitionType_id'>
+                                <option value="" disabled>Competition Type</option>
+                                <option *ngFor="let nctype of comTypes" value={{nctype.CompetitionType_ID}}>
+                                    {{nctype.CompType}} 
+                                </option>
+                            </select><br><br>
+                        </div>
+    
+                        <button type="submit" class="btn btn-block btn-success">Add Competition</button>
+                        <button class = "btn btn-block btn-primary" routerLink="/competition">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>

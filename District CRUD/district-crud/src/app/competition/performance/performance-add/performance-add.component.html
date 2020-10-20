@@ -1,0 +1,78 @@
+<center>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body" style="text-align: center;">
+            <h3 class="card-title">Add Performance</h3>
+            <form [formGroup]="performanceForm" (ngSubmit)="onFormSubmit(performanceForm)">
+
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='athlete_id'>
+                        <option value="" disabled>Athlete</option>
+                        <option *ngFor="let nAthlete of Athletes" value="{{nAthlete.Athlete_ID}}">
+                            {{ nAthlete.Name }} 
+                        </option>
+                    </select><br><br> 
+                </div>
+
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='event_id'>
+                        <option value="" disabled>Event</option>
+                        <option *ngFor="let nevent of events" value="{{nevent.Event_ID}}">
+                            {{ nevent.Description }} 
+                        </option>
+                    </select><br><br> 
+                </div>
+
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='age_id'>
+                        <option value="" disabled>Age</option>
+                        <option *ngFor="let nAge of Ages" value="{{nAge.Age_ID}}">
+                            {{ nAge.Age_ID }} 
+                        </option>
+                    </select><br><br> 
+                </div>
+
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='heat_id'>
+                        <option value="" disabled>Heat</option>
+                        <option *ngFor="let nHeat of Heats" value="{{nHeat.Heat_ID}}">
+                            {{ nHeat.Heat_ID }} 
+                        </option>
+                    </select><br><br> 
+                </div>
+
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='medal_id'>
+                        <option value="" disabled>Medal</option>
+                        <option *ngFor="let nMedal of Medals" value="{{nMedal.Medal_ID}}">
+                            {{ nMedal.Medal_ID }} 
+                        </option>
+                    </select><br><br> 
+                </div>                
+                
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='competition_id'>
+                        <option value="" disabled>Competition</option>
+                        <option *ngFor="let nComp of Competitions" value="{{nComp.Competition_ID}}">
+                            {{ nComp.Name }} 
+                        </option>
+                    </select><br><br> 
+                </div>
+                
+                <div class="input-group mb-3">  
+                    <input type="date" class="form-control" placeholder="Date"  formControlName="date">  
+                </div>
+
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Result"  formControlName="result">  
+                </div>
+
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Points"  formControlName="point">  
+                </div>
+    
+                <button type="submit" class="btn btn-block btn-success">Add Performance</button>
+                <button class = "btn btn-block btn-primary" routerLink="/performance" >Cancel</button>
+            </form> 
+        </div>
+    </div>
+</center>

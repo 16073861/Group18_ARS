@@ -1,0 +1,29 @@
+<center>
+    <div id="body">
+        <div id="child">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body" style="text-align: center;">
+                    <h2 class="card-title">Add New Venue</h2>
+                    <form [formGroup]="VenForm" (ngSubmit)="onFormSubmit(VenForm)">                    
+                        <div class="input-group mb-3">  
+                            <input type="text" class="form-control" placeholder="Venue Name"  formControlName="name">  
+                        </div>
+                        <div class="input-group mb-3">  
+                            <input type="number" class="form-control" placeholder="Capacity"  formControlName="capacity">  
+                        </div>
+
+                        <select class="custom-select"  formControlName='district_id'>
+                            <option value="" disabled>District</option>
+                            <option *ngFor="let ndist of districts" value={{ndist.District_ID}}>
+                                {{ndist.Name}} 
+                            </option>
+                        </select><br><br>
+    
+                        <button type="submit" class="btn btn-block btn-success">Add Venue</button>
+                        <button class = "btn btn-block btn-primary" routerLink="/venue">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>

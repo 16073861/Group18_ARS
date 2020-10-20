@@ -1,0 +1,25 @@
+<center>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body" style="text-align: center;">
+            <h3 class="card-title">Edit District</h3>
+            <form [formGroup]="DistrictForm" (ngSubmit)="onFormSubmit(DistrictForm)">
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="District ID"  formControlName="id" disabled>  
+                </div>
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="District Name"  formControlName="name">  
+                </div> 
+                
+                <select class="custom-select"  formControlName='province'>
+                    <option value="" disabled>Province</option>
+                    <option *ngFor="let nprov of provinces" [ngValue]="nprov">
+                        {{nprov}} 
+                    </option>
+                </select><br><br>
+
+                <button type="submit" class="btn btn-block btn-success">Edit District</button>
+                <button class = "btn btn-block btn-primary" routerLink="/district" >Cancel</button>
+            </form> 
+        </div>
+    </div>
+</center>

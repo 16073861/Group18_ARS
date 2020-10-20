@@ -1,0 +1,73 @@
+<h2 style="text-align: center;">Competitions</h2>
+<div class="container">
+    <div class="text-right">
+        <button id="Create" type="submit" class="btn btn-primary" routerLink="/competitionCreate">
+            Create New
+        </button>
+    </div><br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                    <button type="button" class="btn btn-outline-primary" routerLink="/performance">
+                        Show All
+                    </button> 
+                </th>
+            </tr>
+            <tr>                
+                <th>Name</th>
+                <th>Date</th>
+                <th>Venue</th>
+                <th>District</th>
+                <th>Competition type</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Performance</th>
+            </tr>            
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let ncomp of competitions; let i = index">
+                <ng-container *ngFor="let dist of districts">
+                    <ng-container *ngIf="ncomp.District_ID == dist.District_ID">
+                        <ng-container *ngFor="let ven of venues">
+                            <ng-container *ngIf="ncomp.Venue_ID == ven.Venue_ID">
+                                <ng-container *ngFor="let ctype of comTypes">
+                                    <ng-container *ngIf="ncomp.CompetitionType_ID == ctype.CompetitionType_ID">                                        
+                                        <td>{{ ncomp.Name }}</td>
+                                        <td>{{ ncomp.Date.substring(0,10) }}</td>
+                                        <td>{{ ven.Name }}</td>
+                                        <td>{{ dist.Name }}</td>
+                                        <td>{{ ctype.CompType }}</td>
+                                        <td style="text-align: center;">
+                                            <button type="button" class="btn btn-info" (click)="onEdit(ncomp.Competition_ID)">
+                                                Edit
+                                            </button>           
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <button type="button" class="btn btn-danger" (click)="onDelete(ncomp.Competition_ID, ncomp)">
+                                                Delete
+                                            </button>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <button type="submit" class="btn btn-primary" (click)="Perf(ncomp.Competition_ID)">
+                                                Performance
+                                            </button>
+                                        </td>
+                                    </ng-container>
+                                </ng-container>                                
+                            </ng-container>
+                        </ng-container>                        
+                    </ng-container>
+                </ng-container>                
+            </tr>
+        </tbody>        
+    </table>    
+</div>

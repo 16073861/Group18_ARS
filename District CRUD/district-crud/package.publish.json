@@ -1,0 +1,10 @@
+{
+    "name": "district-crud",
+    "version": "1.0.0",
+    "description": "district-crud application package",
+    "license": "SEE LICENSE IN LICENSE",
+    "author": "Rikus Swanepoel",
+    "scripts": {
+    }
+  }
+  

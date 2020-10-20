@@ -1,0 +1,61 @@
+<center>
+    <div id="body">
+        <div id="child">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body" style="text-align: center;">
+                    <h5 class="card-title">Add New Athlete</h5>
+                    <form [formGroup]="AthleteForm" (ngSubmit)="onFormSubmit(AthleteForm)">                    
+                        <div class="input-group mb-3">  
+                            <input type="text" class="form-control" placeholder="Athlete Name"  formControlName="Name">  
+                        </div>
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='venue_id'>
+                                <option value="" disabled>Athlete</option>
+                                <option *ngFor="let nath of athletes" value={{nath.Athlete_ID}}>
+                                    {{nath.Name}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='Club_ID'>
+                                <option value="" disabled>Club</option>
+                                <option *ngFor="let nclub of clubs" value={{nclub.Club_ID}}>
+                                    {{nclub.Name}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='Gender'>
+                                <option value="" disabled>Gender</option>
+                                <option *ngFor="let ngen of genders" [ngValue]="ngen">
+                                    {{ngen.Gender_ID}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='Status'>
+                                <option value="" disabled>Status</option>
+                                <option *ngFor="let nstat of statsus" [ngValue]="nstat">
+                                    {{ng.Status_ID}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='User'>
+                                <option value="" disabled>User</option>
+                                <option *ngFor="let nuser of compTypes" [ngValue]="nuser">
+                                    {{nuser.User_ID}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+
+    
+                        <button type="submit" class="btn btn-block btn-success">Add Athlete</button>
+                        <button class = "btn btn-block btn-primary" routerLink="/athlete">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </center>

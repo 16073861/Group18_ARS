@@ -1,0 +1,23 @@
+<center>
+    <div id="body">
+        <div id="child">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body" style="text-align: center;">
+                    <h2 class="card-title">Add New Program</h2>
+                    <form [formGroup]="ProgramForm" (ngSubmit)="onFormSubmit(ProgramForm)">                    
+                        <div class="input-group mb-3">  
+                            <input type="text" class="form-control" placeholder="Program Name"  formControlName="name">  
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <textarea rows="5" cols="50" class="form-control" formControlName="description"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-block btn-success">Add Program</button>
+                        <button class = "btn btn-block btn-primary" routerLink="/coach">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>

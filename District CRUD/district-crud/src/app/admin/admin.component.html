@@ -1,0 +1,63 @@
+<h2 style="text-align: center;">Admin Functions</h2><br>
+<center>
+  <div id="wrapper">
+    <div id="first">
+      <br>
+      <h3>Regular Functions</h3>
+      <br>
+      <button type="button" class="btn btn-warning" routerLink="/backup">
+        Backup
+      </button>
+      <button type="button" class="btn btn-warning" routerLink="/audit" style="margin-left: 5px;">
+        Audit Trail
+      </button>
+
+      <div style="text-align:center; margin-top: 100px; "> 
+        <li *ngFor="let file of files"> 
+          <a>Your File has bee uploaded</a><br>
+          <a>Follow </a><a href="{{ this.output.link }}">this link</a><a> to download the file</a><br>
+          <a>or copy {{ this.output.link }} to save/share file</a>
+        </li><br>
+        <button class="btn btn-warning" (click)="onClick()">  
+          Upload File  
+        </button>
+        <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="" style="display:none;" />
+      </div>
+
+      <br><br>
+    </div>
+    <div id="second">
+      <br>
+      <h3>Hard Coded Information</h3>
+      <br>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 20%; width: 100px;" routerLink="">
+        Age_Group
+      </button>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 10%; width: 100px;" routerLink="">
+        Substance
+      </button>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 10%; width: 100px;" routerLink="/club">
+        Club
+      </button><br><br>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 20%; width: 100px;" routerLink="/district">
+        District
+      </button>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 10%; width: 100px;" routerLink="/event">
+        Event
+      </button>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 10%; width: 100px;" routerLink="/federation">
+        Federation
+      </button><br><br>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 20%; width: 100px;" routerLink="/league">
+        League
+      </button>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 10%; width: 100px;" routerLink="/season">
+        Season
+      </button>
+      <button type="button" class="btn btn-outline-warning" style="float: left; margin-left: 10%; width: 100px;" routerLink="/venue">
+        Venue
+      </button>      
+      <br><br><br>           
+    </div>
+  </div>
+</center>

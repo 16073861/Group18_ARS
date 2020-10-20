@@ -1,0 +1,49 @@
+<h2 style="text-align: center;">Performances</h2>
+
+  
+<div class="container">
+    <div class="text-right">
+        <div class="text-right">
+            <button id="Create" type="submit" class="btn btn-primary" routerLink="/athlete">
+                Back to Athletes
+            </button>
+        </div><br>     
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Athlete</th>
+                    <th>Competition</th>
+                    <th>Event</th>
+                    <th>Age Group</th>
+                    <th>Date</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let nperf of performances; let i = index">
+                    <ng-container *ngFor="let comp of competitions">
+                        <ng-container *ngIf="nperf.Competition_ID == comp.Competition_ID">
+                            <ng-container *ngFor="let event of events">
+                                <ng-container *ngIf="nperf.Event_ID == event.Event_ID">
+                                    <ng-container *ngFor="let ath of athletes">
+                                        <ng-container *ngIf="nperf.Athlete_ID == ath.Athlete_ID">                                    
+                                            <td>{{ nperf.Performance_ID }}</td>
+                                            <td>{{ ath.Name }}</td>
+                                            <td>{{ comp.Name }}</td>
+                                            <td>{{ event.Description }}</td>
+                                            <td>U18</td>
+                                            <td>{{ nperf.Date.substring(0,10) }}</td>
+                                            <td>{{ nperf.Result }}</td>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </tbody>        
+        </table>
+    </div>
+</div>

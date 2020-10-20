@@ -1,0 +1,64 @@
+<h2>Top 10 All Time According to Events</h2>
+<br>
+<form x>
+    <div class="login-text">
+
+
+        <br />
+       
+        <select id="Event" #Event>
+            <option *ngFor="let Event of Events" >
+                {{Event.Description}}
+            </option>
+        </select>
+        
+       
+
+       
+       
+        <br />
+        <br />
+        <br />
+       
+        
+        <button 
+      
+        color="primary"  (click)="GenerateTable(Event.value)">Generate Top 10 All Time
+            Report
+        </button>
+       
+        <button color="primary" (click)="Refresh()">Reload Parameters</button>
+        <br />
+        <br />
+
+        <br>
+        <div>
+            <div class="container-fluid">
+                <table class="table table-bordered" id="customers">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th> Heat</th>
+                            <th>Event</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let x of OwnerArray" style="border-bottom: solid black;">
+                            <td>{{x.Athlete}}</td>
+                            <td>{{x.Date}}</td>
+                            <td>{{x.Heat}}</td>
+                            <td>{{x.Event}}</td>
+                            <td>{{x.Performance}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+
+            </div>
+
+        </div>
+    </div>
+</form>

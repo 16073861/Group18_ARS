@@ -1,0 +1,28 @@
+<h2 style="text-align: center;">Reports</h2><br>
+
+<div style="width: 40%; margin-left: 30%; border: 1px solid black;">
+    <br>
+    <button type="button" class="btn btn-outline-success" style="float: left; margin-left: 10%; width: 150px;" routerLink="/Athlete-report"
+    *ngIf="readLocalStorageValue('UserRole')== 'Admin' || readLocalStorageValue('UserRole')== 'Coach'">
+      Athlete
+    </button>
+    <button type="button" class="btn btn-outline-success" style="float: left; margin-left: 10%; width: 150px;" routerLink="/Compreport"
+    *ngIf="readLocalStorageValue('UserRole')== 'Admin' || readLocalStorageValue('UserRole')== 'Coach'">
+      Competition
+    </button>
+    <button type="button" class="btn btn-outline-success" style="float: left; margin-left: 10%; width: 150px;" routerLink="/Top10">
+      Top 10
+    </button><br><br>
+    <button type="button" class="btn btn-outline-success" style="float: left; margin-left: 10%; width: 150px;" routerLink="/Season-Ranking">
+      Seasonal
+    </button>
+    <button type="button" class="btn btn-outline-success" style="float: left; margin-left: 10%; width: 150px;" routerLink="/Record-report"
+    *ngIf="readLocalStorageValue('UserRole')== 'Admin' || readLocalStorageValue('UserRole')== 'Coach'">
+      Records
+    </button>
+    <button type="button" class="btn btn-outline-success" style="float: left; margin-left: 10%; width: 150px;" routerLink="/Result-report"
+    *ngIf="readLocalStorageValue('UserRole')== 'Admin' || readLocalStorageValue('UserRole')== 'Coach'">
+      Results
+    </button>      
+    <br><br><br>           
+  </div>

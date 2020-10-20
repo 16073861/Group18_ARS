@@ -1,0 +1,136 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { DistrictComponent } from './district/district.component';
+import { DistrictAddComponent } from './district/district-add/district-add.component';
+import { DistrictEditComponent } from './district/district-edit/district-edit.component';
+import { ClubComponent } from './club/club.component';
+import { ClubAddComponent } from './club/club-add/club-add.component';
+import { ClubEditComponent } from './club/club-edit/club-edit.component';
+import { FederationComponent } from './federation/federation.component';
+import { FederationAddComponent } from './federation/federation-add/federation-add.component';
+import { FederationEditComponent } from './federation/federation-edit/federation-edit.component';
+import { LeagueComponent } from './league/league.component';
+import { LeagueAddComponent } from './league/league-add/league-add.component';
+import { LeagueEditComponent } from './league/league-edit/league-edit.component';
+import { SeasonComponent } from './season/season.component';
+import { SeasonAddComponent } from './season/season-add/season-add.component';
+import { SeasonEditComponent } from './season/season-edit/season-edit.component';
+import { VenueComponent } from './venue/venue.component';
+import { VenueAddComponent } from './venue/venue-add/venue-add.component';
+import { VenueEditComponent } from './venue/venue-edit/venue-edit.component';
+import { AthleteComponent } from './athlete/athlete.component';
+import { AthleteAddComponent } from './athlete/athlete-add/athlete-add.component';
+import { AthleteEditComponent } from './athlete/athlete-edit/athlete-edit.component';
+import { CompetitionComponent } from './competition/competition.component';
+import { CompetitionAddComponent } from './competition/competition-add/competition-add.component';
+import { CompetitionEditComponent } from './competition/competition-edit/competition-edit.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { ResetPasswordComponent } from './user/reset-password/reset-password.component';
+import { ForgotPaasswordComponent } from './user/forgot-paassword/forgot-paassword.component';
+import { ForbiddenComponent } from './user/forbidden/forbidden.component';
+import { DashboardComponent } from './other/dashboard/dashboard.component';
+import { ProfileComponent } from './other/profile/profile.component';
+import { GetProfileComponent } from './other/get-profile/get-profile.component';
+import { LandingpageComponent } from './other/landingpage/landingpage.component';
+import { CoachComponent } from './coach/coach.component';
+import { AdminComponent } from './admin/admin.component';
+import { CreateAdminComponent } from './admin/create-admin/create-admin.component';
+import { EditAdminComponent } from './admin/edit-admin/edit-admin.component';
+import { PerformanceComponent } from './competition/performance/performance.component';
+import { PerformanceAddComponent } from './competition/performance/performance-add/performance-add.component';
+import { PerformanceEditComponent } from './competition/performance/performance-edit/performance-edit.component';
+import { ProgramComponent } from './program/program.component';
+import { UpdateprogramComponent } from './program/updateprogram/updateprogram.component';
+import { AddprogramComponent } from './program/addprogram/addprogram.component';
+import { ProgramAddComponent } from './coach/program-add/program-add.component';
+import { ProgramEditComponent } from './coach/program-edit/program-edit.component';
+import { BackupComponent } from './backup/backup.component';
+import { HelpComponent } from './help/help.component';
+import { AthleteperfComponent } from './athlete/athleteperf/athleteperf.component';
+import { AuditTrailComponent } from './audit-trail/audit-trail.component';
+import { EventComponent } from './event/event.component';
+import { EventAddComponent } from './event/event-add/event-add.component';
+import { EventEditComponent } from './event/event-edit/event-edit.component';
+
+import { ReportlandingComponent } from './Reports/reportlanding/reportlanding.component';
+import { AthleteReportComponent } from './Reports/athlete-report/athlete-report.component';
+import { CompetitionReportComponent } from './Reports/competition-report/competition-report.component';
+import { CompetitionResultsComponent } from './Reports/competition-results/competition-results.component';
+import { RecordReportComponent } from './Reports/record-report/record-report.component';
+import { SeasonRankingComponent } from './Reports/season-ranking/season-ranking.component';
+import { TopListsComponent } from './Reports/top-lists/top-lists.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent  },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'district', component: DistrictComponent },
+  { path: 'districtCreate', component: DistrictAddComponent },
+  { path: 'districtEdit', component: DistrictEditComponent },
+  { path: 'club', component: ClubComponent },
+  { path: 'clubCreate', component: ClubAddComponent },
+  { path: 'clubEdit', component: ClubEditComponent },
+  { path: 'federation', component: FederationComponent },
+  { path: 'federationCreate', component: FederationAddComponent },
+  { path: 'federationEdit', component: FederationEditComponent },
+  { path: 'league', component: LeagueComponent },
+  { path: 'leagueCreate', component: LeagueAddComponent },
+  { path: 'leagueEdit', component: LeagueEditComponent },
+  { path: 'season', component: SeasonComponent },
+  { path: 'seasonCreate', component: SeasonAddComponent },
+  { path: 'seasonEdit', component: SeasonEditComponent },
+  { path: 'venue', component: VenueComponent },
+  { path: 'venueCreate', component: VenueAddComponent },
+  { path: 'venueEdit', component: VenueEditComponent },
+  { path: 'athlete', component: AthleteComponent },
+  { path: 'athleteCreate', component: AthleteAddComponent },
+  { path: 'athleteEdit', component: AthleteEditComponent },
+  { path: 'competition', component: CompetitionComponent },
+  { path: 'competitionCreate', component: CompetitionAddComponent },
+  { path: 'competitionEdit', component: CompetitionEditComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'passwordreset', component: ResetPasswordComponent },
+  { path: 'forgotpassword', component: ForgotPaasswordComponent },
+  { path: 'forbidden', component: ForbiddenComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'getprofile', component: GetProfileComponent },
+  { path: 'landing', component: LandingpageComponent },
+  { path: 'coach', component: CoachComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'create-admin', component: CreateAdminComponent },
+  { path: 'edit-admin', component: EditAdminComponent },
+  { path: 'performance', component: PerformanceComponent },
+  { path: 'performanceCreate', component: PerformanceAddComponent },
+  { path: 'performanceEdit', component: PerformanceEditComponent },
+  { path: 'program', component: ProgramComponent },
+  { path: 'updateprogram', component: UpdateprogramComponent },
+  { path: 'addprogram', component: AddprogramComponent },
+  { path: 'programCreate', component: ProgramAddComponent },
+  { path: 'programEdit', component: ProgramEditComponent },
+  { path: 'backup', component: BackupComponent },
+  { path: 'help', component: HelpComponent },
+  { path: 'athleteperf', component: AthleteperfComponent },
+  { path: 'reports', component: ReportlandingComponent },
+  { path: 'Athlete-report', component: AthleteReportComponent },
+  { path: 'Compreport', component: CompetitionReportComponent },
+  { path: 'Result-report', component: CompetitionResultsComponent },
+  { path: 'Record-report', component: RecordReportComponent },
+  { path: 'Season-Ranking', component: SeasonRankingComponent },
+  { path: 'Top10', component: TopListsComponent },
+  { path: 'audit', component: AuditTrailComponent },
+  { path: 'event', component: EventComponent },
+  { path: 'eventCreate', component: EventAddComponent },
+  { path: 'eventEdit', component: EventEditComponent }
+  ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

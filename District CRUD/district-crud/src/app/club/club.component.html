@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="text-right">
+    <h2 style="text-align: center;">Club</h2>
+    <!--<form class="form-inline md-form mr-auto mb-4" style="float: right;">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button mdbBtn size="sm" class="btn btn-outline-primary" mdbWavesEffect type="submit">Search</button>
+    </form>
+    <br><br><br>-->
+      <!-- Create New Button -->
+    <button type="submit" class="btn btn-primary" routerLink="/clubCreate">
+      Create New
+    </button>
+    <button type="button" class="btn btn-warning" routerLink="/admin" style="margin-left: 10px;">Back to Admin</button>
+  </div>
+  <br>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Club Name</th>
+          <th>Description</th>
+          <th>District</th>
+          <th>Federation</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let nclub of clubs; let i = index">
+          <ng-container *ngFor="let dist of districts">
+            <ng-container *ngIf="nclub.District_ID == dist.District_ID">
+              <ng-container *ngFor="let fed of federations">
+                <ng-container *ngIf="nclub.Federation_ID == fed.Federation_ID">
+                  <td>{{ nclub.Club_ID }}</td>
+                  <td>{{ nclub.Name }}</td>
+                  <td>{{ nclub.Description }}</td>
+                  <td>{{ dist.Name }}</td>
+                  <td>{{ fed.Name }}</td>
+                  <td>
+                    <button type="button" class="btn btn-info" (click)="onEdit(nclub.Club_ID)">
+                      Edit
+                    </button>           
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger" (click)="onDelete(nclub.Club_ID, nclub)">
+                      Delete
+                    </button>
+                  </td>
+                </ng-container>  
+              </ng-container>  
+            </ng-container>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

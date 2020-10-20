@@ -1,0 +1,179 @@
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+  <a class="navbar-brand" href="../../assets/logo.png"><img src="../../assets/logo.png" style="height: 39px;width: 45px;"/></a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed"
+  
+  data-target="#navbarsExampleDefault"
+  
+  aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  
+  <span class="navbar-toggler-icon"></span>
+  
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">  
+    <ul class="navbar-nav mr-auto">  
+      <li class="nav-item">  
+        <a class="nav-link" routerLink="">ARS  
+          <span class="sr-only">(current)</span>  
+        </a>  
+      </li>
+
+      <li class="nav-item">  
+        <a class="nav-link" routerLink="district">District</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="club">Club</a>  
+      </li>  
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="federation">Federation</a>  
+      </li> 
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="league">League</a>  
+      </li> 
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="season">Season</a>  
+      </li> 
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="venue">Venue</a>  
+      </li> 
+           
+    </ul>
+  </div>  
+</nav>-->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"> 
+  <!--<ul class="navbar-nav mr-auto">
+    <li class='nav-item'>
+      <a class="nav-link" routerLink="registration">*</a> 
+    </li>
+  </ul>-->
+  <a class="navbar-brand" href="../../assets/logo.png"><img src="../../assets/logo.png" style="height: 39px;width: 45px;"/></a>  
+  <span class="navbar-brand">Athletics Ranking System</span>  
+  <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+<!--3 Main Navigators-->    
+    <ul class="navbar-nav mr-auto" style="padding-left: 10%;">  
+      <li class="nav-item">  
+        <a class="nav-link" routerLink="">Home  
+          <span class="sr-only">(current)</span>  
+        </a>  
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="competition">Competitions</a>  
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="athlete">Athletes</a>  
+      </li>
+
+    </ul>
+<!--Login-->
+    <ul class="navbar-nav mr-auto" style="padding-left: 10%;">
+      <li class="nav-item" *ngIf="readLocalStorageValue('Log')== '0'">
+        <a class="nav-link" routerLink="sign-up">Sign Up</a>
+      </li>
+      <li>
+        <a class="nav-link" *ngIf="readLocalStorageValue('Log')== '0'">/</a>
+      </li>
+      <li class="nav-item" *ngIf="readLocalStorageValue('Log')== '0'">
+        <a class="nav-link" routerLink="login">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="readLocalStorageValue('Log')== '1'">
+        <a class="nav-link" (click)='LogOut()'>Logout</a>
+      </li>
+    </ul>
+<!--  
+      <div class="row">
+      <div class="col">
+        <div ngbDropdown class="nav-item">
+          <button class="btn" id="dropdownForm1" style="color: grey;" ngbDropdownToggle>Login</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+            <form class="px-4 py-3">
+              <div class="form-group">
+                <label for="exampleDropdownFormEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+              </div>
+              <div class="form-group">
+                <label for="exampleDropdownFormPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                <label class="form-check-label" for="dropdownCheck">
+                  Remember me
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem>New around here? Sign up</button>
+            <button ngbDropdownItem>Forgot password?</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+-->
+<!--Manage Dropdown-->
+<ul class="navbar-nav ml-auto" style="padding-right: 5%;" *ngIf="readLocalStorageValue('Log')== '1'">
+  <li class="nav-item" ngbDropdown>
+    <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">
+      Manage
+    </a>
+    <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+      <a ngbDropdownItem href="#" routerLink="admin" *ngIf="readLocalStorageValue('UserRole')== 'Admin'">Admin</a>
+      <a ngbDropdownItem href="#" routerLink="coach" *ngIf="readLocalStorageValue('UserRole')== 'Coach'">Coach</a>
+      <a ngbDropdownItem href="#" routerLink="reports">Reports</a>
+      <a ngbDropdownItem href="#" routerLink="help">Help</a>
+      <!--<a ngbDropdownItem href="#" routerLink="district">District</a>
+      <a ngbDropdownItem href="#" routerLink="club">Club</a>
+      <a ngbDropdownItem href="#" routerLink="federation">Federation</a>
+      <a ngbDropdownItem href="#" routerLink="league">League</a> 
+      <a ngbDropdownItem href="#" routerLink="season">Season</a>
+      <a ngbDropdownItem href="#" routerLink="venue">Venue</a> 
+      <a ngbDropdownItem href="#" routerLink="backup">Backup</a>-->
+    </div>
+  </li>      
+</ul>
+
+  </div>
+</nav>
+
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-bottom">
+  <links>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link">
+          <img src="../../assets/google+.png" style="height: 20px;width: 20px;"/>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <img src="../../assets/facebook.png" style="height: 20px;width: 20px;"/>
+        </a>      
+      <li class="nav-item">
+        <a class="nav-link">
+          <img src="../../assets/instagram.png" style="height: 20px;width: 20px;"/>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <img src="../../assets/twitter.png" style="height: 20px;width: 30px;"/>
+        </a>
+      </li>
+    </ul>    
+  </links>
+
+  <ul class="navbar-nav mr-auto" style="padding-left: 85%;">
+    <li class="nav-item">
+      <a class="nav-link" routerLink='help'>Help</a>
+    </li>
+  </ul> 
+
+</nav>-->

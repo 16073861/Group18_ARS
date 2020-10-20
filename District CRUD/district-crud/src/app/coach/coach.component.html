@@ -1,0 +1,57 @@
+<h2 style="text-align: center;">Coach</h2><br>
+<center>
+  <div id="wrapper">
+    <div id="first">
+      <h3>Workout Program</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Program</th>
+            <th></th>
+            <th>
+              <button type="submit" class="btn btn-primary" routerLink="/programCreate">
+                Create New
+              </button>
+            </th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let nprog of programs; let i = index">
+            <td>{{ nprog.Name }}</td>
+            <td>
+              <button type="button" class="btn btn-info" (click)="onEdit(nprog.Program_ID)">
+                View/Edit
+              </button>           
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="onDelete(nprog.Program_ID, nprog)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="second">
+      <br>
+      <h3>Competition List</h3>
+      <br>
+      
+      <form [formGroup]="clEmailForm" (ngSubmit)="onFormSubmit(clEmailForm)">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="To"  formControlName="to" style="margin-left: 10%; margin-right: 10%;"> 
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Subject" formControlName="subject" style="margin-left: 10%; margin-right: 10%;">
+        </div>
+        <div class="input-group mb-3">
+          <textarea rows="5" cols="50" class="form-control" formControlName="body" style="margin-left: 10%; margin-right: 10%;"></textarea> <br>
+        </div>      
+        
+        <button type="submit" class="btn btn-outline-primary">Send Email</button> <br><br>
+      </form>
+      
+    </div>
+  </div>
+</center>

@@ -1,0 +1,15 @@
+#wrapper {
+    text-align: center;
+    width: 80%;
+    overflow: hidden; /* add this to contain floated children */
+}
+#first {
+    width: 45%;
+    float:left; /* add this */
+    border: 1px solid black;
+}
+#second {
+    width: 45%;
+    border: 1px solid black;
+    float: right; /* add this */
+}

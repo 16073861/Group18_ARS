@@ -1,0 +1,43 @@
+<!--<div style="width: 75%; padding-left: 25%;">
+    <form [FormGroup]="DistrictForm" (ngSubmit)="onFormSubmit(DistrictForm)">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="District ID" formControlName="ID"> 
+        </div><br>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="District Name" formControlName="name"> 
+        </div><br>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Province" formControlName="province"> 
+        </div><br>
+        
+        <button type="submit" class="btn btn-block btn-success" style="width: 15%;">Add District</button>
+        <button class = "btn btn-block btn-primary" routerLink="/district" style="width: 15%;">Cancel</button>
+        
+    </form>
+</div>-->
+<center>
+    <div id="body">
+        <div id="child">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body" style="text-align: center;">
+                    <h2 class="card-title">Add New District</h2>
+                    <form [formGroup]="DistrictForm" (ngSubmit)="onFormSubmit(DistrictForm)">                    
+                        <div class="input-group mb-3">  
+                            <input type="text" class="form-control" placeholder="District Name"  formControlName="name">  
+                        </div>
+
+                        <select class="custom-select"  formControlName='province'>
+                            <option value="" disabled>Province</option>
+                            <option *ngFor="let nprov of provinces" [ngValue]="nprov">
+                                {{nprov}} 
+                            </option>
+                        </select><br><br>
+
+                        <button type="submit" class="btn btn-block btn-success">Add District</button>
+                        <button class = "btn btn-block btn-primary" routerLink="/district">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>

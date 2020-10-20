@@ -1,0 +1,35 @@
+<center>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body" style="text-align: center;">
+            <h3 class="card-title">Edit Club</h3>
+            <form [formGroup]="ClubForm" (ngSubmit)="onFormSubmit(ClubForm)">
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Club ID"  formControlName="id" disabled>  
+                </div>
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Club Name"  formControlName="name">  
+                </div> 
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Description"  formControlName="description">  
+                </div>
+
+                <select class="custom-select"  formControlName='districtid'>
+                    <option value="" disabled>District</option>
+                    <option *ngFor="let ndist of districts" value={{ndist.District_ID}}>
+                        {{ndist.Name}} 
+                    </option>
+                </select><br><br>
+
+                <select class="custom-select"  formControlName='federationid'>
+                    <option value="" disabled>Federation</option>
+                    <option *ngFor="let nfed of federations" value={{nfed.Federation_ID}}>
+                        {{nfed.Name}} 
+                    </option>
+                </select><br><br>
+
+                <button type="submit" class="btn btn-block btn-success">Edit Club</button>
+                <button class = "btn btn-block btn-primary" routerLink="/club" >Cancel</button>
+            </form> 
+        </div>
+    </div>
+</center>

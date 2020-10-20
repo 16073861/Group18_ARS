@@ -1,0 +1,91 @@
+<h2>Find Results of a Competition Event</h2>
+<br>
+<form x>
+    <div class="login-text">
+
+
+        <br />
+        <label>Event</label>
+        <br />
+        <select id="Event" #Event>
+            <option *ngFor="let Event of Events" >
+                {{Event.Description}}
+            </option>
+        </select>
+        <br />
+        <br />
+        <label>Heat</label>
+        <br />
+       
+        <select id="Heat" #Heat>
+            <option *ngFor="let Event of Heats" >
+                {{Event.Heat}}
+            </option>
+        </select>
+        <br />
+        <br />
+        <label>Competition Name</label>
+        <br />
+        <select id="CompName" #CompName>
+            <option *ngFor="let x of Competitions" >
+                {{x.Name}}
+            </option>
+        </select>
+
+        <br />
+        <br />
+        <br />
+        <button
+        
+        color="primary"  (click)="GenerateTable(CompName.value,Event.value,Heat.value)">Generate Competition Results
+            Report
+        </button>
+        <br />
+       
+        <br />
+        <button
+        
+         color="primary" (click)="Refresh()">Reload Parameters</button>
+        <br />
+        <br />
+        <span class="alert alert-primary" *ngIf="CompName.invalid && CompName.touched">
+            Please enter a Name
+        </span>
+       
+       
+
+        <br>
+        <div>
+            <div class="container-fluid">
+                <table class="table table-bordered" id="customers">
+                    <thead>
+                        <tr>
+                            <th>Athlete</th>
+                            <th>Surname</th>
+                            <th>ID_Number</th>
+                            <th>Club </th>
+                            <th>Event</th>
+                            <th>Heat</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let x of OwnerArray" style="border-bottom: solid black;">
+                            <td>{{x.Athlete}}</td>
+                            <td>{{x.Surname}}</td>
+                            <td>{{x.ID_Number}}</td>
+                            <td>{{x.Club}}</td>
+                            <td>{{x.Event}}</td>
+                            <td>{{x.Heat}}</td>
+                            <td>{{x.Performance}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+
+            </div>
+
+        </div>
+    </div>
+</form>

@@ -1,0 +1,40 @@
+<h6>Get All Current Records</h6>
+
+
+
+<br />
+<button color="primary" (click)="GenerateTable()" >Create Current Records Table</button>
+<br />
+
+
+
+
+<br>
+<div >
+    <div class="container-fluid" >       
+          <table class="table table-bordered" id="customers">       
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Current Record Result</th>    
+             
+              <th>Date The Record Was Set </th>
+                
+            </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let x of OwnerArray" style="border-bottom: solid black;">
+              <td>{{x.Event}}</td>
+              <td>{{x.Result}}</td>
+              
+              <td>{{x.Date}}</td>
+             
+              
+            </tr>
+          </tbody>
+          </table>
+          <br>
+      
+    </div>
+
+  </div>

@@ -1,0 +1,25 @@
+<div class="card" style="width: 30rem;">
+    <div class="card-body" style="text-align: center;">
+
+      <h3 class="card-title">Edit Admin</h3>
+      <form [formGroup]="AnimeForm" (ngSubmit)="onFormSubmit(AnimeForm)"> 
+          <div class="input-group mb-3">  
+            <input type="text" class="form-control" placeholder="Name"  formControlName="Name">  
+          </div> 
+          <div class="input-group mb-3">  
+            <input type="text" class="form-control" placeholder="Surname"  formControlName="Surname">  
+          </div>  
+          <div class="input-group mb-3">  
+            <input type="text" class="form-control" placeholder="Email"  formControlName="Email">  
+          </div>
+          <div class="input-group mb-3">  
+            <input type="text" class="form-control" placeholder="ID_Number"  formControlName="ID_Number">  
+          </div>
+          <button type="submit" class="btn btn-block btn-success">Edit Anime</button>
+          <button (click) = "GoToList()" class = "btn btn-block btn-primary" >Back to List</button>
+
+
+      </form> 
+
+    </div> 
+</div>

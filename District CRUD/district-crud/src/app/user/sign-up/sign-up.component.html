@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+<body>
+    <div class="login-dark">
+
+        <form [formGroup]="RegisterForm" (ngSubmit)="CreateUser(RegisterForm)">
+
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+
+            <label for="OptionSelect">Please select a User Role:</label>
+            <select class="form-control" id="OptionSelect" #optName name="Option" [(ngModel)]="selection"
+                placeholder="User Role" formControlName="User_role">
+                <option *ngFor="let option of options" [value]="option.id" data-name="option.data"
+                    class="text text-dark">{{option.data}}</option>
+            </select>
+
+            <div class="form-group">
+                <input class="form-control" type="text" name="FirstName" placeholder="First Name"
+                    formControlName="Name">
+
+
+            </div>
+            
+            <div class="form-group">
+                <input class="form-control" type="text" name="LastName" placeholder="Last Name"
+                    formControlName="Surname">
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type="email" name="UserEmail" placeholder="Email" formControlName="Email">
+            </div>
+
+            <div class="form-group">
+
+                <p style="color: red;">{{ConfirmationError}}</p>
+
+                <input class="form-control" type="Password" name="Password" placeholder="Password"
+                    formControlName="Password"
+                    (ngModelChange)='CheckPassword(RegisterForm.value.Password , ConfirmPassword)'>
+
+            </div>
+
+            <div class="form-group">
+
+                <input class="form-control" type="password" name="confirmPassword" placeholder="Confirm Password"
+                    [(ngModel)]="ConfirmPassword" [ngModelOptions]="{standalone: true}"
+                    (ngModelChange)='CheckPassword(RegisterForm.value.Password , ConfirmPassword)'>
+
+
+            </div>
+
+            <div class=" form-group">
+                <button class="btn btn-primary btn-block" type="submit"
+                    [disabled]="!RegisterForm.valid || !CheckPassword(RegisterForm.value.Password , ConfirmPassword)">
+                    Sign Up
+                </button>
+            </div>
+            <a href="../login" class="forgot">Already have an account? Login here</a>
+
+        </form>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

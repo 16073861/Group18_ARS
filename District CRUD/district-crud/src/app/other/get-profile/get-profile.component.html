@@ -1,0 +1,47 @@
+<style>
+    table,
+    th,
+    td {
+        border: 2.5px solid blueviolet;
+        border-collapse: collapse;
+    }
+</style>
+
+<button routerLink="/coach" class="btn btn-success" style="margin-left: 15px;"> Create new Owner </button>
+
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <th> ID number </th>
+            <th> User_role </th>
+            <th> Name </th>
+            <th> Surname </th>
+            <th> Email </th>
+            <th> Update </th>
+            <th> Delete </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let owner of OwnerArray">
+            <td> {{ owner.User_ID }} </td>
+            <td> {{ owner.User_role }} </td>
+            <td> {{ owner.Name }} </td>
+            <td> {{ owner.Surname }} </td>
+            <td> {{ owner.Email }} </td>
+            <td>
+                <button (click)="EditOwner(owner)" class="btn btn-success"> Update </button>
+            </td>
+            <td>
+                <button (click)="DeleteOwner(owner.Coach_ID)" style="margin-left: 15px;" class="btn btn-danger"> Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+
+<a href="#" routerLink="/coach-read"> Back to main table for navigation to other components </a>

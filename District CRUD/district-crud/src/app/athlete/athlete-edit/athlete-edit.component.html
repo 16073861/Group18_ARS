@@ -1,0 +1,44 @@
+<center>
+    <div id="body">
+        <div id="child">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body" style="text-align: center;">
+                    <h5 class="card-title">Add New Competition</h5>
+                    <form [formGroup]="CompetitionForm" (ngSubmit)="onFormSubmit(CompetitionForm)">                    
+                        <div class="input-group mb-3">  
+                            <input type="text" class="form-control" placeholder="Competition Name"  formControlName="Name">  
+                        </div>
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='venue_id'>
+                                <option value="" disabled>Venue</option>
+                                <option *ngFor="let nven of venues" value={{nven.Venue_ID}}>
+                                    {{nven.Name}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='district_id'>
+                                <option value="" disabled>District</option>
+                                <option *ngFor="let ndist of districts" value={{ndist.District_ID}}>
+                                    {{ndist.Name}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+                        
+                        <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='competitionType'>
+                                <option value="" disabled>Competition</option>
+                                <option *ngFor="let ncompTypes of compTypes" [ngValue]="ncompTypes">
+                                    {{ncompTypes}} 
+                                </option>
+                            </select><br><br> 
+                        </div>
+    
+                        <button type="submit" class="btn btn-block btn-success">Add Competition</button>
+                        <button class = "btn btn-block btn-primary" routerLink="/competition">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </center>

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="text-right">
+      <h2 style="text-align: center;">Event</h2>
+      <!--<form class="form-inline md-form mr-auto mb-4" style="float: right;">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button mdbBtn size="sm" class="btn btn-outline-primary" mdbWavesEffect type="submit">Search</button>
+      </form>
+      <br><br><br>-->
+        <!-- Create New Button -->      
+        <button type="submit" class="btn btn-primary" routerLink="/eventCreate">
+          Create New
+        </button>
+        <button type="button" class="btn btn-warning" routerLink="/admin" style="margin-left: 10px;">Back to Admin</button>
+    </div>
+    <br>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Event</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let neve of events; let i = index">
+            <td>{{ neve.EventType_ID }}</td>
+            <td>{{ neve.Name }}</td>
+            <td>{{ neve.Description }}</td>
+            <td>
+              <button type="button" class="btn btn-info" (click)="onEdit(neve.EventType_ID)">
+                Edit
+              </button>           
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="onDelete(neve.EventType_ID, neve)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

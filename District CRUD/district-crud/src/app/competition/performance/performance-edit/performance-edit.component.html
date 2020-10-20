@@ -1,0 +1,57 @@
+<center>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body" style="text-align: center;">
+            <h3 class="card-title">Edit Performance</h3>
+            <form [formGroup]="PerformanceForm" (ngSubmit)="onFormSubmit(PerformanceForm)">
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="id"  formControlName="id" disabled>  
+                </div>
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Athlete"  formControlName="Athlete_ID">  
+                </div> 
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='Age Group'>
+                        <option value="" disabled>Age</option>
+                        <option *ngFor="let nperfAge of Ages" [ngValue]="nperfAge">
+                            {{nperfAge}} 
+                        </option>
+                    </select><br><br> 
+                </div>
+                <div class="input-group mb-3">  
+                    <select class="custom-select"  formControlName='Event Type'>
+                        <option value="" disabled>Event</option>
+                        <option *ngFor="let nperfEvent of Events" [ngValue]="nperfEvent">
+                            {{nperfEvent}} 
+                        </option>
+                    </select><br><br> 
+                </div>
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Heat"  formControlName="Heat_ID">  
+                </div>
+                <div class="input-group mb-3">  
+                            <select class="custom-select"  formControlName='Medal'>
+                                <option value="Medal" disabled>Medal</option>
+                                <option *ngFor="let nperfMedal of Medals" [ngValue]="nperfMedal">
+                                    {{nperfMedal}} 
+                                </option>
+                            </select><br><br> 
+                </div>
+
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Result"  formControlName="Result">  
+                </div>
+                <!-- Dissabled -->
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Competition"  formControlName="Competition_ID" disabled>  
+                </div>
+                
+                <div class="input-group mb-3">  
+                    <input type="text" class="form-control" placeholder="Date"  formControlName="Date" disabled>  
+                </div>
+    
+                <button type="submit" class="btn btn-block btn-success">Edit Performance</button>
+                <button class = "btn btn-block btn-primary" routerLink="/performance" >Cancel</button>
+            </form> 
+        </div>
+    </div>
+</center>

@@ -1,0 +1,48 @@
+<style>
+    table,
+    th,
+    td {
+        border: 2.5px solid blueviolet;
+        border-collapse: collapse;
+    }
+  </style>
+  <body>
+      <div class="bicyclePart" class="container">
+        <h1>Audit Trail Management</h1>
+        <button type="button" class="btn btn-warning" routerLink="/admin" style="float: right; margin-bottom: 5px;">
+          Back to Admin
+        </button>    
+        <div class="searchDiv">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            (keyup)="SearchAudits($event)"
+          />
+        </div>
+        <div class="table-responsive">
+          <table class="table" id="myTable">
+            <thead class="thead">
+              <tr>
+                <th scope="col">Audit Trail ID</th>
+                <th scope="col">User</th>
+                <th scope="col">Date Time</th>
+                <th scope="col">Transaction Type</th>
+                <th scope="col">Transaction Discription</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let audit of AuditList">
+                <td scope="row">{{ audit.AuditTrailID }}</td>
+                <td>{{ audit.Username }}</td>
+                <td>{{ audit.DateTime }}</td>
+                <td>{{ audit.TransactionType }}</td>
+                <td>{{ audit.TransactionDescription }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+    

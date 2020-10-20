@@ -1,0 +1,49 @@
+<h2>All Competitions That have been Held Over The Years</h2>
+<br>
+<label>Start Date</label>
+<input type="date" class="Datey" #StartDate="ngModel" [(ngModel)]="start">
+<br />
+<label>End Date</label>
+<input type="date" class="Datey" #EndDate="ngModel" [(ngModel)]="end">
+<br />
+<br />
+<button 
+[disabled]="!start || !end"
+color="primary" (click)="GenerateTable(StartDate.value, EndDate.value)" >Generate Competition Report</button>
+<br />
+        <button color="primary" (click)="Refresh()">Reload Parameters</button>
+        <br />
+
+
+<br />
+<br />
+<br>
+<div >
+    <div class="container-fluid" >       
+          <table class="table table-bordered" id="customers">       
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Competition type</th>    
+              <th>District</th>  
+              <th>Venue </th>      
+              <th>View Performances</th>    
+            </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let x of OwnerArray" style="border-bottom: solid black;">
+              <td>{{x.Name}}</td>
+              <td>{{x.CompetitionType}}</td>
+              <td>{{x.District}}</td>
+              <td>{{x.Venue}}</td>
+              <td> 
+                <input type="button" value="View Performances"> 
+              </td>
+            </tr>
+          </tbody>
+          </table>
+          <br>
+      
+    </div>
+
+  </div>

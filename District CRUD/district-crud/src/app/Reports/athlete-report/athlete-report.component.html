@@ -1,0 +1,120 @@
+<p>View All Performance for an Athlete</p>
+
+<br>
+
+<div class="login-text">
+   
+    <label>Please Select an Athlete in the DropDown List Below</label>
+    <select id="id" [(ngModel)]="selectedAthlete" #id="ngModel" class="form-control">
+        <option *ngFor="let Event of Athletes" [value]="Event.ID_Number">
+            {{Event.ID_Number + " " + Event.Name + " " + Event.Surname}}
+        </option>
+    </select>
+    <br />
+     <br />
+    <label>Start Date</label>
+    <input
+    required type="date" #StartDate="ngModel" [(ngModel)]="Start" class="Datey" id="StartDate" >
+    <br />
+    <br />
+    <label>End Date</label>
+    <input 
+    required  type="date" #EndDate="ngModel" [(ngModel)]="End" class="Datey" id="EndDate" >
+    <br />
+    <br />
+    <select id="Event" #Event>
+      <option *ngFor="let Event of Events" >
+          {{Event.Description}}
+      </option>
+  </select>
+    <span class="alert alert-primary" *ngIf="id.invalid ">
+        Please enter a Name
+    </span>
+
+  
+    <br />
+        <br />
+    <button 
+    [disabled]="!selectedAthlete || !End || !Start"
+    color="primary" (click)="GenerateTable(id.value, StartDate.value, EndDate.value,Event.value)"   >Generate
+        Athlete
+        Report</button>
+        <br />
+        <br />
+   
+    <button 
+    [disabled]="!selectedAthlete || !End || !Start"
+     color="primary" (click)="Refresh()">Reload Parameters</button>
+    <br />
+    <br />
+    <button  [disabled]="!selectedAthlete || !End || !Start"
+     color="primary" (click)="DownloadsPDF(id.value, StartDate.value, EndDate.value,Event.value)" >Download Chart PDF</button>
+
+    <div *ngIf="chart" class="reportChart">
+<canvas id="canvas">{{chart}}</canvas>
+    </div>
+    <div>
+        <div class="container-fluid">
+            <table class="table table-bordered" id="customers">
+                <thead>
+                    <tr>
+                        <th>Athlete</th>
+                        <th>Competition</th>
+                        <th>Event</th>
+                        <th>Date </th>
+                        <th>Heat</th>
+                        <th>Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of OwnerArray" style="border-bottom: solid black;">
+                        <td>{{x.Athlete}}</td>
+                        <td>{{x.Competition}}</td>
+                        <td>{{x.Event}}</td>
+                        <td>{{x.Date}}</td>
+                        <td>{{x.Heat}}</td>
+                        <td>{{x.Performance}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+        </div>
+
+    </div>
+     <div
+    class="modal fade"
+    id="success"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Success</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Forgot Password Email sent</div>
+        <div class="modal-footer buttonDiv">
+          <button
+            type="button"
+            class="btn btn-secondary OkBtn"
+            data-dismiss="modal"
+          >
+            Ok
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

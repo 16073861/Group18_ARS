@@ -1,0 +1,156 @@
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    table, th, td{
+        border: 1px solid black;
+    }
+    th{
+        text-align: center;
+    }
+    .tdbtn{
+        text-align: center;
+    }
+    .center{
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<h1 style="text-align: center;">Athletes</h1>-->
+<!--
+<div style="float: left; margin-left: 10%;">
+    <button type="button" class="btn btn-outline-warning" style="background-color: #505c7c;" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapse">
+        Filter Results 
+        <i class="fa fa-angle-down" style="font-size:18px"></i>
+  </button>
+  <div id="collapse" [ngbCollapse]="!isCollapsed">
+    <div class="card">
+        <div class="card-body" style="background-color: #505c7c; text-align: center;"> 
+            Filter Athletes
+            <div>
+                <div style="width: 100px; float:left; margin:10px">
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-warning" id="dropdown" ngbDropdownToggle>Gender</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdown" style="background-color: #505c7c;">
+                            <button ngbDropdownItem>Male</button>
+                            <button ngbDropdownItem>Female</button>
+                        </div>                
+                    </div>
+                </div>
+                <div style="width: 100px; float:left; margin:10px">
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-warning" id="dropdown" ngbDropdownToggle>Event</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdown" style="background-color: #505c7c;">
+                            <button ngbDropdownItem>100m Hurdles</button>
+                            <button ngbDropdownItem>100m Sprint</button>
+                            <button ngbDropdownItem>800m</button>
+                        </div>                
+                    </div>
+                </div>
+                <div style="width: 100px; float:left; margin:10px">
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-outline-warning" id="dropdown" ngbDropdownToggle>Competition</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdown" style="background-color: #505c7c;">
+                            <button ngbDropdownItem>Competition A</button>
+                            <button ngbDropdownItem>Competition B</button>
+                            <button ngbDropdownItem>Competition C</button>
+                        </div>                
+                    </div>
+                </div>                
+            </div>                                  
+        </div>
+    </div>
+  </div>
+</div><br><br>
+-->
+
+<!--
+<button id="Create" type="submit" class="btn btn-primary" routerLink="/athlete-add">
+    Create New
+  </button>
+<table class="center" style="width: 80%;">
+    <tr>
+        <th>Gender</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Club</th>
+        <th>Status</th>
+        <th><label>Edit</label></th>
+        <th><label>Delete</label></th>
+        
+    </tr>
+    <tr *ngFor="let nath of Athletes; let i = index">
+                <td>{{ nath.Gender_ID }}</td>
+                <td>{{ nath.Name }}</td>
+                <td>{{ nath.Surname }}</td>
+                <td>{{ nath.Club_ID }}</td>
+                <td>{{ nnath.Status_ID }}</td>
+                <td style="text-align: center;">
+                <button type="button" class="btn btn-info" (click)="onEdit(ncomp.Competition_ID)">
+                    Edit
+                </button>           
+                </td>
+                <td style="text-align: center;">
+                <button type="button" class="btn btn-danger" (click)="onDelete(ncomp.Competition_ID)">
+                    Delete
+                </button>
+                </td>
+                <td style="text-align: center;">
+                    <button type="submit" class="btn btn-primary" (click)="ngOnInit(ncomp.Competition_ID)" routerLink="/performance">
+                    Performance
+                    </button>
+                </td>
+        
+      </tr>
+</table>-->
+<h2 style="text-align: center;">Athletes</h2>
+<div class="container">
+    <div class="text-right">
+        <!--<button id="Create" type="submit" class="btn btn-primary" routerLink="/athleteCreate">
+            Create New
+        </button>-->
+    </div><br>
+    <!--datatable [dtOptions]="dtOptions" class="row-border hover"-->
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Gender</th>
+            <th>Club</th>
+            <th>Points</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let nathlete of athletes">
+            <ng-container *ngFor="let club of clubs">
+                <ng-container *ngIf="nathlete.Club_ID == club.Club_ID">
+                    <ng-container *ngFor="let gen of genders">
+                        <ng-container *ngIf="nathlete.Gender_ID == gen.Gender_ID">
+                            <ng-container *ngFor="let stat of statuses">
+                                <ng-container *ngIf="nathlete.Status_ID == stat.Status_ID">
+                                    <td>{{ nathlete.Name }}</td>
+                                    <td>{{ nathlete.Surname }}</td>
+                                    <td *ngIf="gen.Gender_ID == 1">Male</td>
+                                    <td *ngIf="gen.Gender_ID == 2">Female</td>
+                                    <td>{{ club.Name }}</td>
+                                    <td>{{ nathlete.Points }}</td>
+                                    <td *ngIf="stat.Status_ID == 1">Active</td>
+                                    <td *ngIf="stat.Status_ID == 2">Inactive</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary" (click)="Perf(nathlete.Athlete_ID)">
+                                            Performances
+                                        </button>
+                                    </td>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+          </tr>
+        </tbody>        
+    </table>
+
+</div>
