@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Tuks_Athletics_SystemModelStoreContainer" CdmEntityContainer="Tuks_Athletics_SystemEntities">
+    <EntitySetMapping Name="Accesses">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Access">
+        <MappingFragment StoreEntitySet="Access">
+          <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+          <ScalarProperty Name="Function_ID" ColumnName="Function_ID" />
+          <ScalarProperty Name="Access_Level" ColumnName="Access_Level" />
+          <ScalarProperty Name="Authorised" ColumnName="Authorised" />
+          <ScalarProperty Name="Unauthorised" ColumnName="Unauthorised" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Access_Level">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Access_Level">
+        <MappingFragment StoreEntitySet="Access_Level">
+          <ScalarProperty Name="Access_Level1" ColumnName="Access_Level" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Admin_ID" ColumnName="Admin_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Age_Group">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Age_Group">
+        <MappingFragment StoreEntitySet="Age_Group">
+          <ScalarProperty Name="Age_ID" ColumnName="Age_ID" />
+          <ScalarProperty Name="Age_Group1" ColumnName="Age_Group" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Athletes">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Athlete">
+        <MappingFragment StoreEntitySet="Athlete">
+          <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+          <ScalarProperty Name="Club_ID" ColumnName="Club_ID" />
+          <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditTrails">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.AuditTrail">
+        <MappingFragment StoreEntitySet="AuditTrail">
+          <ScalarProperty Name="AuditTrailID" ColumnName="AuditTrailID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="TransactionDescription" ColumnName="TransactionDescription" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banned_Substance">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Banned_Substance">
+        <MappingFragment StoreEntitySet="Banned_Substance">
+          <ScalarProperty Name="Substance_ID" ColumnName="Substance_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clubs">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Club">
+        <MappingFragment StoreEntitySet="Club">
+          <ScalarProperty Name="Club_ID" ColumnName="Club_ID" />
+          <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+          <ScalarProperty Name="Federation_ID" ColumnName="Federation_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coaches">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Coach">
+        <MappingFragment StoreEntitySet="Coach">
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Competitions">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Competition">
+        <MappingFragment StoreEntitySet="Competition">
+          <ScalarProperty Name="Competition_ID" ColumnName="Competition_ID" />
+          <ScalarProperty Name="Club_ID" ColumnName="Club_ID" />
+          <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+          <ScalarProperty Name="Venue_ID" ColumnName="Venue_ID" />
+          <ScalarProperty Name="CompetitionType_ID" ColumnName="CompetitionType_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompetitionTypes">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.CompetitionType">
+        <MappingFragment StoreEntitySet="CompetitionType">
+          <ScalarProperty Name="CompetitionType_ID" ColumnName="CompetitionType_ID" />
+          <ScalarProperty Name="CompType" ColumnName="CompType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.District">
+        <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="EventType_ID" ColumnName="EventType_ID" />
+          <ScalarProperty Name="Unit_ID" ColumnName="Unit_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventTypes">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.EventType">
+        <MappingFragment StoreEntitySet="EventType">
+          <ScalarProperty Name="EventType_ID" ColumnName="EventType_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercises">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Exercise">
+        <MappingFragment StoreEntitySet="Exercise">
+          <ScalarProperty Name="Exercise_ID" ColumnName="Exercise_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Sets" ColumnName="Sets" />
+          <ScalarProperty Name="Reps" ColumnName="Reps" />
+          <ScalarProperty Name="Cardio" ColumnName="Cardio" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Federations">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Federation">
+        <MappingFragment StoreEntitySet="Federation">
+          <ScalarProperty Name="Federation_ID" ColumnName="Federation_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Descrption" ColumnName="Descrption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Functionalities">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Functionality">
+        <MappingFragment StoreEntitySet="Functionality">
+          <ScalarProperty Name="Function_ID" ColumnName="Function_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+          <ScalarProperty Name="Gender1" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Heats">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Heat">
+        <MappingFragment StoreEntitySet="Heat">
+          <ScalarProperty Name="Heat_ID" ColumnName="Heat_ID" />
+          <ScalarProperty Name="Heat1" ColumnName="Heat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leagues">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.League">
+        <MappingFragment StoreEntitySet="League">
+          <ScalarProperty Name="League_ID" ColumnName="League_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Tier" ColumnName="Tier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medals">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Medal">
+        <MappingFragment StoreEntitySet="Medal">
+          <ScalarProperty Name="Medal_ID" ColumnName="Medal_ID" />
+          <ScalarProperty Name="Medal1" ColumnName="Medal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Performances">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Performance">
+        <MappingFragment StoreEntitySet="Performance">
+          <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+          <ScalarProperty Name="Heat_ID" ColumnName="Heat_ID" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Medal_ID" ColumnName="Medal_ID" />
+          <ScalarProperty Name="Age_ID" ColumnName="Age_ID" />
+          <ScalarProperty Name="Competition_ID" ColumnName="Competition_ID" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Performance_ID" ColumnName="Performance_ID" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programs">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Program">
+        <MappingFragment StoreEntitySet="Program">
+          <ScalarProperty Name="Program_ID" ColumnName="Program_ID" />
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Records">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Record">
+        <MappingFragment StoreEntitySet="Record">
+          <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+          <ScalarProperty Name="Unit_ID" ColumnName="Unit_ID" />
+          <ScalarProperty Name="Record1" ColumnName="Record" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seasons">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Season">
+        <MappingFragment StoreEntitySet="Season">
+          <ScalarProperty Name="Season_ID" ColumnName="Season_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="Status1" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Technicians">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Technician">
+        <MappingFragment StoreEntitySet="Technician">
+          <ScalarProperty Name="Technician_ID" ColumnName="Technician_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test_Result">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Test_Result">
+        <MappingFragment StoreEntitySet="Test_Result">
+          <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+          <ScalarProperty Name="TestType_ID" ColumnName="TestType_ID" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestTypes">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.TestType">
+        <MappingFragment StoreEntitySet="TestType">
+          <ScalarProperty Name="TestType_ID" ColumnName="TestType_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="Unit_ID" ColumnName="Unit_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Access_Level" ColumnName="Access_Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venues">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Venue">
+        <MappingFragment StoreEntitySet="Venue">
+          <ScalarProperty Name="Venue_ID" ColumnName="Venue_ID" />
+          <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Athlete_Event_Program">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Athlete_Event_Program">
+        <MappingFragment StoreEntitySet="Athlete_Event_Program">
+          <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Program_ID" ColumnName="Program_ID" />
+          <ScalarProperty Name="Age_ID" ColumnName="Age_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Athlete_Season_Event">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Athlete_Season_Event">
+        <MappingFragment StoreEntitySet="Athlete_Season_Event">
+          <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+          <ScalarProperty Name="Season_ID" ColumnName="Season_ID" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coach_Event_Program_Exercise">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Coach_Event_Program_Exercise">
+        <MappingFragment StoreEntitySet="Coach_Event_Program_Exercise">
+          <ScalarProperty Name="Exercise_ID" ColumnName="Exercise_ID" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Program_ID" ColumnName="Program_ID" />
+          <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Federation_Event_Record">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Federation_Event_Record">
+        <MappingFragment StoreEntitySet="Federation_Event_Record">
+          <ScalarProperty Name="Federation_ID" ColumnName="Federation_ID" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+          <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Technician_Competition_League_Season_Event">
+      <EntityTypeMapping TypeName="Tuks_Athletics_SystemModel.Technician_Competition_League_Season_Event">
+        <MappingFragment StoreEntitySet="Technician_Competition_League_Season_Event">
+          <ScalarProperty Name="Technician_ID" ColumnName="Technician_ID" />
+          <ScalarProperty Name="Competition_ID" ColumnName="Competition_ID" />
+          <ScalarProperty Name="League_ID" ColumnName="League_ID" />
+          <ScalarProperty Name="Season_ID" ColumnName="Season_ID" />
+          <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Athlete_Coach" TypeName="Tuks_Athletics_SystemModel.Athlete_Coach" StoreEntitySet="Athlete_Coach">
+      <EndProperty Name="Athlete">
+        <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+      </EndProperty>
+      <EndProperty Name="Coach">
+        <ScalarProperty Name="Coach_ID" ColumnName="Coach_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Athlete_Test_Result" TypeName="Tuks_Athletics_SystemModel.Athlete_Test_Result" StoreEntitySet="Athlete_Test_Result">
+      <EndProperty Name="Athlete">
+        <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+      </EndProperty>
+      <EndProperty Name="Test_Result">
+        <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Banned_Substance_Test_Result" TypeName="Tuks_Athletics_SystemModel.Banned_Substance_Test_Result" StoreEntitySet="Banned_Substance_Test_Result">
+      <EndProperty Name="Banned_Substance">
+        <ScalarProperty Name="Substance_ID" ColumnName="Substance_ID" />
+      </EndProperty>
+      <EndProperty Name="Test_Result">
+        <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

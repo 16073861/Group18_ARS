@@ -1,0 +1,1342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Tuks_Athletics_SystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Access">
+    <Key>
+      <PropertyRef Name="Access_ID" />
+    </Key>
+    <Property Name="Access_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Function_ID" Type="Int32" Nullable="false" />
+    <Property Name="Access_Level" Type="Int32" Nullable="false" />
+    <Property Name="Authorised" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Unauthorised" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Access_Level1" Relationship="Self.FK_Access_Access_Level" FromRole="Access" ToRole="Access_Level" />
+    <NavigationProperty Name="Functionality" Relationship="Self.FK_Access_Functionality" FromRole="Access" ToRole="Functionality" />
+  </EntityType>
+  <EntityType Name="Access_Level">
+    <Key>
+      <PropertyRef Name="Access_Level1" />
+    </Key>
+    <Property Name="Access_Level1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accesses" Relationship="Self.FK_Access_Access_Level" FromRole="Access_Level" ToRole="Access" />
+    <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_Access_Level" FromRole="Access_Level" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Admin_ID" />
+    </Key>
+    <Property Name="Admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Number" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Admin_User1" FromRole="Admin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Age_Group">
+    <Key>
+      <PropertyRef Name="Age_ID" />
+    </Key>
+    <Property Name="Age_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Age_Group1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Athlete_Event_Program" Relationship="Self.FK_Athlete_Event_Program_Age_Group" FromRole="Age_Group" ToRole="Athlete_Event_Program" />
+    <NavigationProperty Name="Performances" Relationship="Self.FK_Performance_Age_Group" FromRole="Age_Group" ToRole="Performance" />
+  </EntityType>
+  <EntityType Name="Athlete">
+    <Key>
+      <PropertyRef Name="Athlete_ID" />
+    </Key>
+    <Property Name="Athlete_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Club_ID" Type="Int32" />
+    <Property Name="Gender_ID" Type="Int32" />
+    <Property Name="Status_ID" Type="Int32" />
+    <Property Name="User_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Points" Type="Int32" />
+    <NavigationProperty Name="Club" Relationship="Self.FK_Athlete_Club" FromRole="Athlete" ToRole="Club" />
+    <NavigationProperty Name="Athlete_Event_Program" Relationship="Self.FK_Athlete_Event_Program_Athlete" FromRole="Athlete" ToRole="Athlete_Event_Program" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Athlete_Gender" FromRole="Athlete" ToRole="Gender" />
+    <NavigationProperty Name="Athlete_Season_Event" Relationship="Self.FK_Athlete_Season_Event_Athlete" FromRole="Athlete" ToRole="Athlete_Season_Event" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Athlete_Status" FromRole="Athlete" ToRole="Status" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Athlete_User" FromRole="Athlete" ToRole="User" />
+    <NavigationProperty Name="Performances" Relationship="Self.FK_Performance_Athlete" FromRole="Athlete" ToRole="Performance" />
+    <NavigationProperty Name="Records" Relationship="Self.FK_Record_Athlete" FromRole="Athlete" ToRole="Record" />
+    <NavigationProperty Name="Coaches" Relationship="Self.Athlete_Coach" FromRole="Athlete" ToRole="Coach" />
+    <NavigationProperty Name="Test_Result" Relationship="Self.Athlete_Test_Result" FromRole="Athlete" ToRole="Test_Result" />
+  </EntityType>
+  <EntityType Name="AuditTrail">
+    <Key>
+      <PropertyRef Name="AuditTrailID" />
+    </Key>
+    <Property Name="AuditTrailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="TransactionDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TransactionType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK__AuditTrai__User___160F4887" FromRole="AuditTrail" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Banned_Substance">
+    <Key>
+      <PropertyRef Name="Substance_ID" />
+    </Key>
+    <Property Name="Substance_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Test_Result" Relationship="Self.Banned_Substance_Test_Result" FromRole="Banned_Substance" ToRole="Test_Result" />
+  </EntityType>
+  <EntityType Name="Club">
+    <Key>
+      <PropertyRef Name="Club_ID" />
+    </Key>
+    <Property Name="Club_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="District_ID" Type="Int32" />
+    <Property Name="Federation_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Athletes" Relationship="Self.FK_Athlete_Club" FromRole="Club" ToRole="Athlete" />
+    <NavigationProperty Name="District" Relationship="Self.FK_Club_District" FromRole="Club" ToRole="District" />
+    <NavigationProperty Name="Federation" Relationship="Self.FK_Club_Federation" FromRole="Club" ToRole="Federation" />
+    <NavigationProperty Name="Competitions" Relationship="Self.FK_Competition_Club" FromRole="Club" ToRole="Competition" />
+  </EntityType>
+  <EntityType Name="Coach">
+    <Key>
+      <PropertyRef Name="Coach_ID" />
+    </Key>
+    <Property Name="Coach_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Coach_Event_Program_Exercise" Relationship="Self.FK_Coach_Event_Program_Exercise_Coach" FromRole="Coach" ToRole="Coach_Event_Program_Exercise" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Coach_User" FromRole="Coach" ToRole="User" />
+    <NavigationProperty Name="Athletes" Relationship="Self.Athlete_Coach" FromRole="Coach" ToRole="Athlete" />
+  </EntityType>
+  <EntityType Name="Competition">
+    <Key>
+      <PropertyRef Name="Competition_ID" />
+    </Key>
+    <Property Name="Competition_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Club_ID" Type="Int32" Nullable="false" />
+    <Property Name="District_ID" Type="Int32" Nullable="false" />
+    <Property Name="Venue_ID" Type="Int32" Nullable="false" />
+    <Property Name="CompetitionType_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Club" Relationship="Self.FK_Competition_Club" FromRole="Competition" ToRole="Club" />
+    <NavigationProperty Name="CompetitionType" Relationship="Self.FK_Competition_CompetitionType" FromRole="Competition" ToRole="CompetitionType" />
+    <NavigationProperty Name="District" Relationship="Self.FK_Competition_District" FromRole="Competition" ToRole="District" />
+    <NavigationProperty Name="Venue" Relationship="Self.FK_Competition_Venue" FromRole="Competition" ToRole="Venue" />
+    <NavigationProperty Name="Performances" Relationship="Self.FK_Performance_Competition" FromRole="Competition" ToRole="Performance" />
+    <NavigationProperty Name="Technician_Competition_League_Season_Event" Relationship="Self.FK_Technician_Competition_League_Season_Event_Competition" FromRole="Competition" ToRole="Technician_Competition_League_Season_Event" />
+  </EntityType>
+  <EntityType Name="CompetitionType">
+    <Key>
+      <PropertyRef Name="CompetitionType_ID" />
+    </Key>
+    <Property Name="CompetitionType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Competitions" Relationship="Self.FK_Competition_CompetitionType" FromRole="CompetitionType" ToRole="Competition" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="District_ID" />
+    </Key>
+    <Property Name="District_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Clubs" Relationship="Self.FK_Club_District" FromRole="District" ToRole="Club" />
+    <NavigationProperty Name="Competitions" Relationship="Self.FK_Competition_District" FromRole="District" ToRole="Competition" />
+    <NavigationProperty Name="Venues" Relationship="Self.FK_Venue_District" FromRole="District" ToRole="Venue" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventType_ID" Type="Int32" Nullable="false" />
+    <Property Name="Unit_ID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Athlete_Event_Program" Relationship="Self.FK_Athlete_Event_Program_Event" FromRole="Event" ToRole="Athlete_Event_Program" />
+    <NavigationProperty Name="Athlete_Season_Event" Relationship="Self.FK_Athlete_Season_Event_Event" FromRole="Event" ToRole="Athlete_Season_Event" />
+    <NavigationProperty Name="Coach_Event_Program_Exercise" Relationship="Self.FK_Coach_Event_Program_Exercise_Event" FromRole="Event" ToRole="Coach_Event_Program_Exercise" />
+    <NavigationProperty Name="EventType" Relationship="Self.FK_Event_EventType" FromRole="Event" ToRole="EventType" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_Event_Unit" FromRole="Event" ToRole="Unit" />
+    <NavigationProperty Name="Federation_Event_Record" Relationship="Self.FK_Federation_Event_Record_Event" FromRole="Event" ToRole="Federation_Event_Record" />
+    <NavigationProperty Name="Performances" Relationship="Self.FK_Performance_Event" FromRole="Event" ToRole="Performance" />
+    <NavigationProperty Name="Records" Relationship="Self.FK_Record_Event" FromRole="Event" ToRole="Record" />
+    <NavigationProperty Name="Technician_Competition_League_Season_Event" Relationship="Self.FK_Technician_Competition_League_Season_Event_Event" FromRole="Event" ToRole="Technician_Competition_League_Season_Event" />
+  </EntityType>
+  <EntityType Name="EventType">
+    <Key>
+      <PropertyRef Name="EventType_ID" />
+    </Key>
+    <Property Name="EventType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_Event_EventType" FromRole="EventType" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Exercise">
+    <Key>
+      <PropertyRef Name="Exercise_ID" />
+    </Key>
+    <Property Name="Exercise_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Sets" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reps" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cardio" Type="Single" />
+    <Property Name="Strength" Type="Single" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Coach_Event_Program_Exercise" Relationship="Self.FK_Coach_Event_Program_Exercise_Exercise" FromRole="Exercise" ToRole="Coach_Event_Program_Exercise" />
+  </EntityType>
+  <EntityType Name="Federation">
+    <Key>
+      <PropertyRef Name="Federation_ID" />
+    </Key>
+    <Property Name="Federation_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descrption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Clubs" Relationship="Self.FK_Club_Federation" FromRole="Federation" ToRole="Club" />
+    <NavigationProperty Name="Federation_Event_Record" Relationship="Self.FK_Federation_Event_Record_Federation" FromRole="Federation" ToRole="Federation_Event_Record" />
+  </EntityType>
+  <EntityType Name="Functionality">
+    <Key>
+      <PropertyRef Name="Function_ID" />
+    </Key>
+    <Property Name="Function_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accesses" Relationship="Self.FK_Access_Functionality" FromRole="Functionality" ToRole="Access" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Gender_ID" />
+    </Key>
+    <Property Name="Gender_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gender1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Athletes" Relationship="Self.FK_Athlete_Gender" FromRole="Gender" ToRole="Athlete" />
+  </EntityType>
+  <EntityType Name="Heat">
+    <Key>
+      <PropertyRef Name="Heat_ID" />
+    </Key>
+    <Property Name="Heat_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Heat1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Performances" Relationship="Self.FK_Performance_Heat" FromRole="Heat" ToRole="Performance" />
+  </EntityType>
+  <EntityType Name="League">
+    <Key>
+      <PropertyRef Name="League_ID" />
+    </Key>
+    <Property Name="League_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Technician_Competition_League_Season_Event" Relationship="Self.FK_Technician_Competition_League_Season_Event_League" FromRole="League" ToRole="Technician_Competition_League_Season_Event" />
+  </EntityType>
+  <EntityType Name="Medal">
+    <Key>
+      <PropertyRef Name="Medal_ID" />
+    </Key>
+    <Property Name="Medal_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Medal1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Performances" Relationship="Self.FK_Performance_Medal" FromRole="Medal" ToRole="Performance" />
+  </EntityType>
+  <EntityType Name="Performance">
+    <Key>
+      <PropertyRef Name="Performance_ID" />
+    </Key>
+    <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+    <Property Name="Heat_ID" Type="Int32" Nullable="false" />
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <Property Name="Medal_ID" Type="Int32" Nullable="false" />
+    <Property Name="Age_ID" Type="Int32" Nullable="false" />
+    <Property Name="Competition_ID" Type="Int32" Nullable="false" />
+    <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Performance_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Point" Type="Int32" />
+    <NavigationProperty Name="Age_Group" Relationship="Self.FK_Performance_Age_Group" FromRole="Performance" ToRole="Age_Group" />
+    <NavigationProperty Name="Athlete" Relationship="Self.FK_Performance_Athlete" FromRole="Performance" ToRole="Athlete" />
+    <NavigationProperty Name="Competition" Relationship="Self.FK_Performance_Competition" FromRole="Performance" ToRole="Competition" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Performance_Event" FromRole="Performance" ToRole="Event" />
+    <NavigationProperty Name="Heat" Relationship="Self.FK_Performance_Heat" FromRole="Performance" ToRole="Heat" />
+    <NavigationProperty Name="Medal" Relationship="Self.FK_Performance_Medal" FromRole="Performance" ToRole="Medal" />
+  </EntityType>
+  <EntityType Name="Program">
+    <Key>
+      <PropertyRef Name="Program_ID" />
+    </Key>
+    <Property Name="Program_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Coach_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Athlete_Event_Program" Relationship="Self.FK_Athlete_Event_Program_Program" FromRole="Program" ToRole="Athlete_Event_Program" />
+    <NavigationProperty Name="Coach_Event_Program_Exercise" Relationship="Self.FK_Coach_Event_Program_Exercise_Program" FromRole="Program" ToRole="Coach_Event_Program_Exercise" />
+  </EntityType>
+  <EntityType Name="Record">
+    <Key>
+      <PropertyRef Name="Record_ID" />
+    </Key>
+    <Property Name="Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+    <Property Name="Unit_ID" Type="Int32" Nullable="false" />
+    <Property Name="Record1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Athlete" Relationship="Self.FK_Record_Athlete" FromRole="Record" ToRole="Athlete" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Record_Event" FromRole="Record" ToRole="Event" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_Record_Unit" FromRole="Record" ToRole="Unit" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__User__Type_ID__5165187F" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Season">
+    <Key>
+      <PropertyRef Name="Season_ID" />
+    </Key>
+    <Property Name="Season_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Athlete_Season_Event" Relationship="Self.FK_Athlete_Season_Event_Season" FromRole="Season" ToRole="Athlete_Season_Event" />
+    <NavigationProperty Name="Technician_Competition_League_Season_Event" Relationship="Self.FK_Technician_Competition_League_Season_Event_Season" FromRole="Season" ToRole="Technician_Competition_League_Season_Event" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Status_ID" />
+    </Key>
+    <Property Name="Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Athletes" Relationship="Self.FK_Athlete_Status" FromRole="Status" ToRole="Athlete" />
+  </EntityType>
+  <EntityType Name="Technician">
+    <Key>
+      <PropertyRef Name="Technician_ID" />
+    </Key>
+    <Property Name="Technician_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Technician_Competition_League_Season_Event" Relationship="Self.FK_Technician_Competition_League_Season_Event_Technician" FromRole="Technician" ToRole="Technician_Competition_League_Season_Event" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Technician_User" FromRole="Technician" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Test_Result">
+    <Key>
+      <PropertyRef Name="Test_ID" />
+    </Key>
+    <Property Name="Test_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestType_ID" Type="Int32" />
+    <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TestType" Relationship="Self.FK_Test_Result_TestType" FromRole="Test_Result" ToRole="TestType" />
+    <NavigationProperty Name="Athletes" Relationship="Self.Athlete_Test_Result" FromRole="Test_Result" ToRole="Athlete" />
+    <NavigationProperty Name="Banned_Substance" Relationship="Self.Banned_Substance_Test_Result" FromRole="Test_Result" ToRole="Banned_Substance" />
+  </EntityType>
+  <EntityType Name="TestType">
+    <Key>
+      <PropertyRef Name="TestType_ID" />
+    </Key>
+    <Property Name="TestType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Test_Result" Relationship="Self.FK_Test_Result_TestType" FromRole="TestType" ToRole="Test_Result" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Unit_ID" />
+    </Key>
+    <Property Name="Unit_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_Event_Unit" FromRole="Unit" ToRole="Event" />
+    <NavigationProperty Name="Records" Relationship="Self.FK_Record_Unit" FromRole="Unit" ToRole="Record" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_User1" FromRole="User" ToRole="Admin" />
+    <NavigationProperty Name="Athletes" Relationship="Self.FK_Athlete_User" FromRole="User" ToRole="Athlete" />
+    <NavigationProperty Name="AuditTrails" Relationship="Self.FK__AuditTrai__User___160F4887" FromRole="User" ToRole="AuditTrail" />
+    <NavigationProperty Name="Coaches" Relationship="Self.FK_Coach_User" FromRole="User" ToRole="Coach" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__User__Type_ID__5165187F" FromRole="User" ToRole="Role" />
+    <NavigationProperty Name="Technicians" Relationship="Self.FK_Technician_User" FromRole="User" ToRole="Technician" />
+    <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_User" FromRole="User" ToRole="UserType" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="Type_ID" />
+    </Key>
+    <Property Name="Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Access_Level" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Access_Level1" Relationship="Self.FK_UserType_Access_Level" FromRole="UserType" ToRole="Access_Level" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserType_User" FromRole="UserType" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Venue">
+    <Key>
+      <PropertyRef Name="Venue_ID" />
+    </Key>
+    <Property Name="Venue_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="District_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Capacity" Type="Int32" />
+    <NavigationProperty Name="Competitions" Relationship="Self.FK_Competition_Venue" FromRole="Venue" ToRole="Competition" />
+    <NavigationProperty Name="District" Relationship="Self.FK_Venue_District" FromRole="Venue" ToRole="District" />
+  </EntityType>
+  <EntityType Name="Athlete_Event_Program">
+    <Key>
+      <PropertyRef Name="Athlete_ID" />
+      <PropertyRef Name="Event_ID" />
+      <PropertyRef Name="Program_ID" />
+      <PropertyRef Name="Age_ID" />
+    </Key>
+    <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <Property Name="Program_ID" Type="Int32" Nullable="false" />
+    <Property Name="Age_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Age_Group" Relationship="Self.FK_Athlete_Event_Program_Age_Group" FromRole="Athlete_Event_Program" ToRole="Age_Group" />
+    <NavigationProperty Name="Athlete" Relationship="Self.FK_Athlete_Event_Program_Athlete" FromRole="Athlete_Event_Program" ToRole="Athlete" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Athlete_Event_Program_Event" FromRole="Athlete_Event_Program" ToRole="Event" />
+    <NavigationProperty Name="Program" Relationship="Self.FK_Athlete_Event_Program_Program" FromRole="Athlete_Event_Program" ToRole="Program" />
+  </EntityType>
+  <EntityType Name="Athlete_Season_Event">
+    <Key>
+      <PropertyRef Name="Athlete_ID" />
+      <PropertyRef Name="Season_ID" />
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+    <Property Name="Season_ID" Type="Int32" Nullable="false" />
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Athlete" Relationship="Self.FK_Athlete_Season_Event_Athlete" FromRole="Athlete_Season_Event" ToRole="Athlete" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Athlete_Season_Event_Event" FromRole="Athlete_Season_Event" ToRole="Event" />
+    <NavigationProperty Name="Season" Relationship="Self.FK_Athlete_Season_Event_Season" FromRole="Athlete_Season_Event" ToRole="Season" />
+  </EntityType>
+  <EntityType Name="Coach_Event_Program_Exercise">
+    <Key>
+      <PropertyRef Name="Exercise_ID" />
+      <PropertyRef Name="Event_ID" />
+      <PropertyRef Name="Program_ID" />
+      <PropertyRef Name="Coach_ID" />
+    </Key>
+    <Property Name="Exercise_ID" Type="Int32" Nullable="false" />
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <Property Name="Program_ID" Type="Int32" Nullable="false" />
+    <Property Name="Coach_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Coach" Relationship="Self.FK_Coach_Event_Program_Exercise_Coach" FromRole="Coach_Event_Program_Exercise" ToRole="Coach" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Coach_Event_Program_Exercise_Event" FromRole="Coach_Event_Program_Exercise" ToRole="Event" />
+    <NavigationProperty Name="Exercise" Relationship="Self.FK_Coach_Event_Program_Exercise_Exercise" FromRole="Coach_Event_Program_Exercise" ToRole="Exercise" />
+    <NavigationProperty Name="Program" Relationship="Self.FK_Coach_Event_Program_Exercise_Program" FromRole="Coach_Event_Program_Exercise" ToRole="Program" />
+  </EntityType>
+  <EntityType Name="Federation_Event_Record">
+    <Key>
+      <PropertyRef Name="Federation_ID" />
+      <PropertyRef Name="Event_ID" />
+      <PropertyRef Name="Record_ID" />
+    </Key>
+    <Property Name="Federation_ID" Type="Int32" Nullable="false" />
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <Property Name="Record_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Federation_Event_Record_Event" FromRole="Federation_Event_Record" ToRole="Event" />
+    <NavigationProperty Name="Federation" Relationship="Self.FK_Federation_Event_Record_Federation" FromRole="Federation_Event_Record" ToRole="Federation" />
+  </EntityType>
+  <EntityType Name="Technician_Competition_League_Season_Event">
+    <Key>
+      <PropertyRef Name="Technician_ID" />
+      <PropertyRef Name="Competition_ID" />
+      <PropertyRef Name="League_ID" />
+      <PropertyRef Name="Season_ID" />
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Technician_ID" Type="Int32" Nullable="false" />
+    <Property Name="Competition_ID" Type="Int32" Nullable="false" />
+    <Property Name="League_ID" Type="Int32" Nullable="false" />
+    <Property Name="Season_ID" Type="Int32" Nullable="false" />
+    <Property Name="Event_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Competition" Relationship="Self.FK_Technician_Competition_League_Season_Event_Competition" FromRole="Technician_Competition_League_Season_Event" ToRole="Competition" />
+    <NavigationProperty Name="Event" Relationship="Self.FK_Technician_Competition_League_Season_Event_Event" FromRole="Technician_Competition_League_Season_Event" ToRole="Event" />
+    <NavigationProperty Name="League" Relationship="Self.FK_Technician_Competition_League_Season_Event_League" FromRole="Technician_Competition_League_Season_Event" ToRole="League" />
+    <NavigationProperty Name="Season" Relationship="Self.FK_Technician_Competition_League_Season_Event_Season" FromRole="Technician_Competition_League_Season_Event" ToRole="Season" />
+    <NavigationProperty Name="Technician" Relationship="Self.FK_Technician_Competition_League_Season_Event_Technician" FromRole="Technician_Competition_League_Season_Event" ToRole="Technician" />
+  </EntityType>
+  <Association Name="FK_Access_Access_Level">
+    <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="1" />
+    <End Role="Access" Type="Self.Access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Access_Level">
+        <PropertyRef Name="Access_Level1" />
+      </Principal>
+      <Dependent Role="Access">
+        <PropertyRef Name="Access_Level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Access_Functionality">
+    <End Role="Functionality" Type="Self.Functionality" Multiplicity="1" />
+    <End Role="Access" Type="Self.Access" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Functionality">
+        <PropertyRef Name="Function_ID" />
+      </Principal>
+      <Dependent Role="Access">
+        <PropertyRef Name="Function_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserType_Access_Level">
+    <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="1" />
+    <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Access_Level">
+        <PropertyRef Name="Access_Level1" />
+      </Principal>
+      <Dependent Role="UserType">
+        <PropertyRef Name="Access_Level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Event_Program_Age_Group">
+    <End Role="Age_Group" Type="Self.Age_Group" Multiplicity="1" />
+    <End Role="Athlete_Event_Program" Type="Self.Athlete_Event_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Age_Group">
+        <PropertyRef Name="Age_ID" />
+      </Principal>
+      <Dependent Role="Athlete_Event_Program">
+        <PropertyRef Name="Age_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Performance_Age_Group">
+    <End Role="Age_Group" Type="Self.Age_Group" Multiplicity="1" />
+    <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Age_Group">
+        <PropertyRef Name="Age_ID" />
+      </Principal>
+      <Dependent Role="Performance">
+        <PropertyRef Name="Age_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="0..1" />
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="Club_ID" />
+      </Principal>
+      <Dependent Role="Athlete">
+        <PropertyRef Name="Club_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Event_Program_Athlete">
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="1" />
+    <End Role="Athlete_Event_Program" Type="Self.Athlete_Event_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Athlete">
+        <PropertyRef Name="Athlete_ID" />
+      </Principal>
+      <Dependent Role="Athlete_Event_Program">
+        <PropertyRef Name="Athlete_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Gender_ID" />
+      </Principal>
+      <Dependent Role="Athlete">
+        <PropertyRef Name="Gender_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Season_Event_Athlete">
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="1" />
+    <End Role="Athlete_Season_Event" Type="Self.Athlete_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Athlete">
+        <PropertyRef Name="Athlete_ID" />
+      </Principal>
+      <Dependent Role="Athlete_Season_Event">
+        <PropertyRef Name="Athlete_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Athlete">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Athlete">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Performance_Athlete">
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="1" />
+    <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Athlete">
+        <PropertyRef Name="Athlete_ID" />
+      </Principal>
+      <Dependent Role="Performance">
+        <PropertyRef Name="Athlete_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Record_Athlete">
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="1" />
+    <End Role="Record" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Athlete">
+        <PropertyRef Name="Athlete_ID" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="Athlete_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AuditTrai__User___160F4887">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AuditTrail" Type="Self.AuditTrail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="AuditTrail">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Club_District">
+    <End Role="District" Type="Self.District" Multiplicity="0..1" />
+    <End Role="Club" Type="Self.Club" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="District_ID" />
+      </Principal>
+      <Dependent Role="Club">
+        <PropertyRef Name="District_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Club_Federation">
+    <End Role="Federation" Type="Self.Federation" Multiplicity="0..1" />
+    <End Role="Club" Type="Self.Club" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federation">
+        <PropertyRef Name="Federation_ID" />
+      </Principal>
+      <Dependent Role="Club">
+        <PropertyRef Name="Federation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competition_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="Club_ID" />
+      </Principal>
+      <Dependent Role="Competition">
+        <PropertyRef Name="Club_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_Event_Program_Exercise_Coach">
+    <End Role="Coach" Type="Self.Coach" Multiplicity="1" />
+    <End Role="Coach_Event_Program_Exercise" Type="Self.Coach_Event_Program_Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach">
+        <PropertyRef Name="Coach_ID" />
+      </Principal>
+      <Dependent Role="Coach_Event_Program_Exercise">
+        <PropertyRef Name="Coach_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Coach">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competition_CompetitionType">
+    <End Role="CompetitionType" Type="Self.CompetitionType" Multiplicity="1" />
+    <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompetitionType">
+        <PropertyRef Name="CompetitionType_ID" />
+      </Principal>
+      <Dependent Role="Competition">
+        <PropertyRef Name="CompetitionType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competition_District">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="District_ID" />
+      </Principal>
+      <Dependent Role="Competition">
+        <PropertyRef Name="District_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competition_Venue">
+    <End Role="Venue" Type="Self.Venue" Multiplicity="1" />
+    <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venue">
+        <PropertyRef Name="Venue_ID" />
+      </Principal>
+      <Dependent Role="Competition">
+        <PropertyRef Name="Venue_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Performance_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Competition_ID" />
+      </Principal>
+      <Dependent Role="Performance">
+        <PropertyRef Name="Competition_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technician_Competition_League_Season_Event_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Technician_Competition_League_Season_Event" Type="Self.Technician_Competition_League_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Competition_ID" />
+      </Principal>
+      <Dependent Role="Technician_Competition_League_Season_Event">
+        <PropertyRef Name="Competition_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venue_District">
+    <End Role="District" Type="Self.District" Multiplicity="0..1" />
+    <End Role="Venue" Type="Self.Venue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="District_ID" />
+      </Principal>
+      <Dependent Role="Venue">
+        <PropertyRef Name="District_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Event_Program_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Athlete_Event_Program" Type="Self.Athlete_Event_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Athlete_Event_Program">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Season_Event_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Athlete_Season_Event" Type="Self.Athlete_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Athlete_Season_Event">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_Event_Program_Exercise_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Coach_Event_Program_Exercise" Type="Self.Coach_Event_Program_Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Coach_Event_Program_Exercise">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_EventType">
+    <End Role="EventType" Type="Self.EventType" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventType">
+        <PropertyRef Name="EventType_ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="EventType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_Unit">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Unit_ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Unit_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Federation_Event_Record_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Federation_Event_Record" Type="Self.Federation_Event_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Federation_Event_Record">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Performance_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Performance">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Record_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Record" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technician_Competition_League_Season_Event_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Technician_Competition_League_Season_Event" Type="Self.Technician_Competition_League_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Technician_Competition_League_Season_Event">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_Event_Program_Exercise_Exercise">
+    <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+    <End Role="Coach_Event_Program_Exercise" Type="Self.Coach_Event_Program_Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercise">
+        <PropertyRef Name="Exercise_ID" />
+      </Principal>
+      <Dependent Role="Coach_Event_Program_Exercise">
+        <PropertyRef Name="Exercise_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Federation_Event_Record_Federation">
+    <End Role="Federation" Type="Self.Federation" Multiplicity="1" />
+    <End Role="Federation_Event_Record" Type="Self.Federation_Event_Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Federation">
+        <PropertyRef Name="Federation_ID" />
+      </Principal>
+      <Dependent Role="Federation_Event_Record">
+        <PropertyRef Name="Federation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Performance_Heat">
+    <End Role="Heat" Type="Self.Heat" Multiplicity="1" />
+    <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Heat">
+        <PropertyRef Name="Heat_ID" />
+      </Principal>
+      <Dependent Role="Performance">
+        <PropertyRef Name="Heat_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technician_Competition_League_Season_Event_League">
+    <End Role="League" Type="Self.League" Multiplicity="1" />
+    <End Role="Technician_Competition_League_Season_Event" Type="Self.Technician_Competition_League_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="League">
+        <PropertyRef Name="League_ID" />
+      </Principal>
+      <Dependent Role="Technician_Competition_League_Season_Event">
+        <PropertyRef Name="League_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Performance_Medal">
+    <End Role="Medal" Type="Self.Medal" Multiplicity="1" />
+    <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medal">
+        <PropertyRef Name="Medal_ID" />
+      </Principal>
+      <Dependent Role="Performance">
+        <PropertyRef Name="Medal_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Event_Program_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="Athlete_Event_Program" Type="Self.Athlete_Event_Program" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="Program_ID" />
+      </Principal>
+      <Dependent Role="Athlete_Event_Program">
+        <PropertyRef Name="Program_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coach_Event_Program_Exercise_Program">
+    <End Role="Program" Type="Self.Program" Multiplicity="1" />
+    <End Role="Coach_Event_Program_Exercise" Type="Self.Coach_Event_Program_Exercise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="Program_ID" />
+      </Principal>
+      <Dependent Role="Coach_Event_Program_Exercise">
+        <PropertyRef Name="Program_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Record_Unit">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Record" Type="Self.Record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Unit_ID" />
+      </Principal>
+      <Dependent Role="Record">
+        <PropertyRef Name="Unit_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__Type_ID__5165187F">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Athlete_Season_Event_Season">
+    <End Role="Season" Type="Self.Season" Multiplicity="1" />
+    <End Role="Athlete_Season_Event" Type="Self.Athlete_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="Season_ID" />
+      </Principal>
+      <Dependent Role="Athlete_Season_Event">
+        <PropertyRef Name="Season_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technician_Competition_League_Season_Event_Season">
+    <End Role="Season" Type="Self.Season" Multiplicity="1" />
+    <End Role="Technician_Competition_League_Season_Event" Type="Self.Technician_Competition_League_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Season">
+        <PropertyRef Name="Season_ID" />
+      </Principal>
+      <Dependent Role="Technician_Competition_League_Season_Event">
+        <PropertyRef Name="Season_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technician_Competition_League_Season_Event_Technician">
+    <End Role="Technician" Type="Self.Technician" Multiplicity="1" />
+    <End Role="Technician_Competition_League_Season_Event" Type="Self.Technician_Competition_League_Season_Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Technician">
+        <PropertyRef Name="Technician_ID" />
+      </Principal>
+      <Dependent Role="Technician_Competition_League_Season_Event">
+        <PropertyRef Name="Technician_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technician_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Technician" Type="Self.Technician" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Technician">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Result_TestType">
+    <End Role="TestType" Type="Self.TestType" Multiplicity="0..1" />
+    <End Role="Test_Result" Type="Self.Test_Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestType">
+        <PropertyRef Name="TestType_ID" />
+      </Principal>
+      <Dependent Role="Test_Result">
+        <PropertyRef Name="TestType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserType_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="UserType">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Athlete_Coach">
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="*" />
+    <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+  </Association>
+  <Association Name="Athlete_Test_Result">
+    <End Role="Athlete" Type="Self.Athlete" Multiplicity="*" />
+    <End Role="Test_Result" Type="Self.Test_Result" Multiplicity="*" />
+  </Association>
+  <Association Name="Banned_Substance_Test_Result">
+    <End Role="Banned_Substance" Type="Self.Banned_Substance" Multiplicity="*" />
+    <End Role="Test_Result" Type="Self.Test_Result" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Tuks_Athletics_SystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accesses" EntityType="Self.Access" />
+    <EntitySet Name="Access_Level" EntityType="Self.Access_Level" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Age_Group" EntityType="Self.Age_Group" />
+    <EntitySet Name="Athletes" EntityType="Self.Athlete" />
+    <EntitySet Name="AuditTrails" EntityType="Self.AuditTrail" />
+    <EntitySet Name="Banned_Substance" EntityType="Self.Banned_Substance" />
+    <EntitySet Name="Clubs" EntityType="Self.Club" />
+    <EntitySet Name="Coaches" EntityType="Self.Coach" />
+    <EntitySet Name="Competitions" EntityType="Self.Competition" />
+    <EntitySet Name="CompetitionTypes" EntityType="Self.CompetitionType" />
+    <EntitySet Name="Districts" EntityType="Self.District" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="EventTypes" EntityType="Self.EventType" />
+    <EntitySet Name="Exercises" EntityType="Self.Exercise" />
+    <EntitySet Name="Federations" EntityType="Self.Federation" />
+    <EntitySet Name="Functionalities" EntityType="Self.Functionality" />
+    <EntitySet Name="Genders" EntityType="Self.Gender" />
+    <EntitySet Name="Heats" EntityType="Self.Heat" />
+    <EntitySet Name="Leagues" EntityType="Self.League" />
+    <EntitySet Name="Medals" EntityType="Self.Medal" />
+    <EntitySet Name="Performances" EntityType="Self.Performance" />
+    <EntitySet Name="Programs" EntityType="Self.Program" />
+    <EntitySet Name="Records" EntityType="Self.Record" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Seasons" EntityType="Self.Season" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="Technicians" EntityType="Self.Technician" />
+    <EntitySet Name="Test_Result" EntityType="Self.Test_Result" />
+    <EntitySet Name="TestTypes" EntityType="Self.TestType" />
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+    <EntitySet Name="Venues" EntityType="Self.Venue" />
+    <EntitySet Name="Athlete_Event_Program" EntityType="Self.Athlete_Event_Program" />
+    <EntitySet Name="Athlete_Season_Event" EntityType="Self.Athlete_Season_Event" />
+    <EntitySet Name="Coach_Event_Program_Exercise" EntityType="Self.Coach_Event_Program_Exercise" />
+    <EntitySet Name="Federation_Event_Record" EntityType="Self.Federation_Event_Record" />
+    <EntitySet Name="Technician_Competition_League_Season_Event" EntityType="Self.Technician_Competition_League_Season_Event" />
+    <AssociationSet Name="FK_Access_Access_Level" Association="Self.FK_Access_Access_Level">
+      <End Role="Access_Level" EntitySet="Access_Level" />
+      <End Role="Access" EntitySet="Accesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Access_Functionality" Association="Self.FK_Access_Functionality">
+      <End Role="Functionality" EntitySet="Functionalities" />
+      <End Role="Access" EntitySet="Accesses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserType_Access_Level" Association="Self.FK_UserType_Access_Level">
+      <End Role="Access_Level" EntitySet="Access_Level" />
+      <End Role="UserType" EntitySet="UserTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_User1" Association="Self.FK_Admin_User1">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Event_Program_Age_Group" Association="Self.FK_Athlete_Event_Program_Age_Group">
+      <End Role="Age_Group" EntitySet="Age_Group" />
+      <End Role="Athlete_Event_Program" EntitySet="Athlete_Event_Program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Performance_Age_Group" Association="Self.FK_Performance_Age_Group">
+      <End Role="Age_Group" EntitySet="Age_Group" />
+      <End Role="Performance" EntitySet="Performances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Club" Association="Self.FK_Athlete_Club">
+      <End Role="Club" EntitySet="Clubs" />
+      <End Role="Athlete" EntitySet="Athletes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Event_Program_Athlete" Association="Self.FK_Athlete_Event_Program_Athlete">
+      <End Role="Athlete" EntitySet="Athletes" />
+      <End Role="Athlete_Event_Program" EntitySet="Athlete_Event_Program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Gender" Association="Self.FK_Athlete_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Athlete" EntitySet="Athletes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Season_Event_Athlete" Association="Self.FK_Athlete_Season_Event_Athlete">
+      <End Role="Athlete" EntitySet="Athletes" />
+      <End Role="Athlete_Season_Event" EntitySet="Athlete_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Status" Association="Self.FK_Athlete_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Athlete" EntitySet="Athletes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_User" Association="Self.FK_Athlete_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Athlete" EntitySet="Athletes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Performance_Athlete" Association="Self.FK_Performance_Athlete">
+      <End Role="Athlete" EntitySet="Athletes" />
+      <End Role="Performance" EntitySet="Performances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Record_Athlete" Association="Self.FK_Record_Athlete">
+      <End Role="Athlete" EntitySet="Athletes" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AuditTrai__User___160F4887" Association="Self.FK__AuditTrai__User___160F4887">
+      <End Role="User" EntitySet="Users" />
+      <End Role="AuditTrail" EntitySet="AuditTrails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Club_District" Association="Self.FK_Club_District">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Club" EntitySet="Clubs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Club_Federation" Association="Self.FK_Club_Federation">
+      <End Role="Federation" EntitySet="Federations" />
+      <End Role="Club" EntitySet="Clubs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competition_Club" Association="Self.FK_Competition_Club">
+      <End Role="Club" EntitySet="Clubs" />
+      <End Role="Competition" EntitySet="Competitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_Event_Program_Exercise_Coach" Association="Self.FK_Coach_Event_Program_Exercise_Coach">
+      <End Role="Coach" EntitySet="Coaches" />
+      <End Role="Coach_Event_Program_Exercise" EntitySet="Coach_Event_Program_Exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_User" Association="Self.FK_Coach_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Coach" EntitySet="Coaches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competition_CompetitionType" Association="Self.FK_Competition_CompetitionType">
+      <End Role="CompetitionType" EntitySet="CompetitionTypes" />
+      <End Role="Competition" EntitySet="Competitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competition_District" Association="Self.FK_Competition_District">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Competition" EntitySet="Competitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competition_Venue" Association="Self.FK_Competition_Venue">
+      <End Role="Venue" EntitySet="Venues" />
+      <End Role="Competition" EntitySet="Competitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Performance_Competition" Association="Self.FK_Performance_Competition">
+      <End Role="Competition" EntitySet="Competitions" />
+      <End Role="Performance" EntitySet="Performances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technician_Competition_League_Season_Event_Competition" Association="Self.FK_Technician_Competition_League_Season_Event_Competition">
+      <End Role="Competition" EntitySet="Competitions" />
+      <End Role="Technician_Competition_League_Season_Event" EntitySet="Technician_Competition_League_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venue_District" Association="Self.FK_Venue_District">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Venue" EntitySet="Venues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Event_Program_Event" Association="Self.FK_Athlete_Event_Program_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Athlete_Event_Program" EntitySet="Athlete_Event_Program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Season_Event_Event" Association="Self.FK_Athlete_Season_Event_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Athlete_Season_Event" EntitySet="Athlete_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_Event_Program_Exercise_Event" Association="Self.FK_Coach_Event_Program_Exercise_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Coach_Event_Program_Exercise" EntitySet="Coach_Event_Program_Exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_EventType" Association="Self.FK_Event_EventType">
+      <End Role="EventType" EntitySet="EventTypes" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_Unit" Association="Self.FK_Event_Unit">
+      <End Role="Unit" EntitySet="Units" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Federation_Event_Record_Event" Association="Self.FK_Federation_Event_Record_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Federation_Event_Record" EntitySet="Federation_Event_Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Performance_Event" Association="Self.FK_Performance_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Performance" EntitySet="Performances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Record_Event" Association="Self.FK_Record_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technician_Competition_League_Season_Event_Event" Association="Self.FK_Technician_Competition_League_Season_Event_Event">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Technician_Competition_League_Season_Event" EntitySet="Technician_Competition_League_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_Event_Program_Exercise_Exercise" Association="Self.FK_Coach_Event_Program_Exercise_Exercise">
+      <End Role="Exercise" EntitySet="Exercises" />
+      <End Role="Coach_Event_Program_Exercise" EntitySet="Coach_Event_Program_Exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Federation_Event_Record_Federation" Association="Self.FK_Federation_Event_Record_Federation">
+      <End Role="Federation" EntitySet="Federations" />
+      <End Role="Federation_Event_Record" EntitySet="Federation_Event_Record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Performance_Heat" Association="Self.FK_Performance_Heat">
+      <End Role="Heat" EntitySet="Heats" />
+      <End Role="Performance" EntitySet="Performances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technician_Competition_League_Season_Event_League" Association="Self.FK_Technician_Competition_League_Season_Event_League">
+      <End Role="League" EntitySet="Leagues" />
+      <End Role="Technician_Competition_League_Season_Event" EntitySet="Technician_Competition_League_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Performance_Medal" Association="Self.FK_Performance_Medal">
+      <End Role="Medal" EntitySet="Medals" />
+      <End Role="Performance" EntitySet="Performances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Event_Program_Program" Association="Self.FK_Athlete_Event_Program_Program">
+      <End Role="Program" EntitySet="Programs" />
+      <End Role="Athlete_Event_Program" EntitySet="Athlete_Event_Program" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coach_Event_Program_Exercise_Program" Association="Self.FK_Coach_Event_Program_Exercise_Program">
+      <End Role="Program" EntitySet="Programs" />
+      <End Role="Coach_Event_Program_Exercise" EntitySet="Coach_Event_Program_Exercise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Record_Unit" Association="Self.FK_Record_Unit">
+      <End Role="Unit" EntitySet="Units" />
+      <End Role="Record" EntitySet="Records" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__Type_ID__5165187F" Association="Self.FK__User__Type_ID__5165187F">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Athlete_Season_Event_Season" Association="Self.FK_Athlete_Season_Event_Season">
+      <End Role="Season" EntitySet="Seasons" />
+      <End Role="Athlete_Season_Event" EntitySet="Athlete_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technician_Competition_League_Season_Event_Season" Association="Self.FK_Technician_Competition_League_Season_Event_Season">
+      <End Role="Season" EntitySet="Seasons" />
+      <End Role="Technician_Competition_League_Season_Event" EntitySet="Technician_Competition_League_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technician_Competition_League_Season_Event_Technician" Association="Self.FK_Technician_Competition_League_Season_Event_Technician">
+      <End Role="Technician" EntitySet="Technicians" />
+      <End Role="Technician_Competition_League_Season_Event" EntitySet="Technician_Competition_League_Season_Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technician_User" Association="Self.FK_Technician_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Technician" EntitySet="Technicians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Result_TestType" Association="Self.FK_Test_Result_TestType">
+      <End Role="TestType" EntitySet="TestTypes" />
+      <End Role="Test_Result" EntitySet="Test_Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserType_User" Association="Self.FK_UserType_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserType" EntitySet="UserTypes" />
+    </AssociationSet>
+    <AssociationSet Name="Athlete_Coach" Association="Self.Athlete_Coach">
+      <End Role="Athlete" EntitySet="Athletes" />
+      <End Role="Coach" EntitySet="Coaches" />
+    </AssociationSet>
+    <AssociationSet Name="Athlete_Test_Result" Association="Self.Athlete_Test_Result">
+      <End Role="Athlete" EntitySet="Athletes" />
+      <End Role="Test_Result" EntitySet="Test_Result" />
+    </AssociationSet>
+    <AssociationSet Name="Banned_Substance_Test_Result" Association="Self.Banned_Substance_Test_Result">
+      <End Role="Banned_Substance" EntitySet="Banned_Substance" />
+      <End Role="Test_Result" EntitySet="Test_Result" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
